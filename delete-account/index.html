@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delete Your Account — TIRA</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f8f4ed;
+      color: #1a1a1a;
+      line-height: 1.7;
+    }
+
+    header {
+      background: #1a3a2a;
+      padding: 28px 24px;
+      text-align: center;
+    }
+    header h1 { font-size: 2rem; font-weight: 900; color: #fff; letter-spacing: 8px; }
+    header p  { color: #52b788; margin-top: 4px; font-size: 0.9rem; letter-spacing: 1px; }
+
+    main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1a3a2a;
+      margin: 36px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid #52b788;
+    }
+
+    p  { margin-bottom: 14px; }
+    ul { margin: 10px 0 14px 20px; }
+    ul li { margin-bottom: 8px; }
+
+    .steps {
+      counter-reset: step;
+      list-style: none;
+      margin-left: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .steps li {
+      counter-increment: step;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: #fff;
+      border-radius: 14px;
+      padding: 16px 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .steps li::before {
+      content: counter(step);
+      min-width: 32px;
+      height: 32px;
+      background: #1a3a2a;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+    .steps li .step-text strong { display: block; font-size: 0.95rem; color: #1a3a2a; }
+    .steps li .step-text span   { font-size: 0.875rem; color: #555; }
+
+    .alert {
+      background: #1a3a2a;
+      color: #f8f4ed;
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin: 28px 0;
+    }
+    .alert strong { color: #52b788; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px;
+      font-size: 0.9rem;
+    }
+    th {
+      background: #1a3a2a;
+      color: #fff;
+      padding: 10px 14px;
+      text-align: left;
+    }
+    td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #e0dbd2;
+      vertical-align: top;
+    }
+    tr:nth-child(even) td { background: #fff; }
+    .deleted  { color: #16A34A; font-weight: 600; }
+    .retained { color: #D97706; font-weight: 600; }
+
+    a { color: #1a3a2a; font-weight: 600; }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 0.8rem;
+      color: #999;
+      border-top: 1px solid #e0dbd2;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>TIRA</h1>
+  <p>Your team, together</p>
+</header>
+
+<main>
+
+  <h2>Delete your TIRA account</h2>
+
+  <p>
+    You can delete your TIRA account and all associated personal data at any time —
+    directly from the app or by contacting us. Once deleted, your account cannot
+    be recovered.
+  </p>
+
+  <div class="alert">
+    <p>
+      <strong>Fastest way:</strong> Delete your account directly inside the TIRA app
+      in under 30 seconds — no email required. See the steps below.
+    </p>
+  </div>
+
+  <h2>How to delete your account in the app</h2>
+
+  <ol class="steps">
+    <li>
+      <div class="step-text">
+        <strong>Open TIRA and sign in</strong>
+        <span>Make sure you are signed in to the account you want to delete.</span>
+      </div>
+    </li>
+    <li>
+      <div class="step-text">
+        <strong>Go to the Profile tab</strong>
+        <span>Tap the <strong>Profile</strong> icon in the bottom navigation bar (far right).</span>
+      </div>
+    </li>
+    <li>
+      <div class="step-text">
+        <strong>Open Privacy Dashboard</strong>
+        <span>Scroll down and tap <strong>Privacy Dashboard</strong>.</span>
+      </div>
+    </li>
+    <li>
+      <div class="step-text">
+        <strong>Tap "Delete my account"</strong>
+        <span>Scroll to the bottom of the Privacy Dashboard and tap <strong>Delete my account</strong>.</span>
+      </div>
+    </li>
+    <li>
+      <div class="step-text">
+        <strong>Confirm deletion</strong>
+        <span>A confirmation dialog will appear. Tap <strong>Delete permanently</strong> to confirm.
+        Your account and personal data will be deleted immediately.</span>
+      </div>
+    </li>
+  </ol>
+
+  <h2>Can't access the app?</h2>
+
+  <p>
+    If you cannot access the app, email us at
+    <a href="mailto:privacy@tiraapp.nz">privacy@tiraapp.nz</a> from the email address
+    or phone number associated with your account. We will process your request within
+    5 working days and send you a confirmation.
+  </p>
+
+  <h2>What data is deleted and what is kept</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Data</th>
+        <th>Action</th>
+        <th>Retention period</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Your name, phone number, email, profile photo</td>
+        <td class="deleted">Deleted immediately</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Your RSVP history and attendance records</td>
+        <td class="deleted">Deleted immediately</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Messages you sent in team chats</td>
+        <td class="deleted">Deleted immediately</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Children's profiles you registered</td>
+        <td class="deleted">Deleted immediately</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Medical notes for children</td>
+        <td class="deleted">Deleted immediately</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Push notification token</td>
+        <td class="deleted">Deleted immediately</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Events you created as a coach</td>
+        <td class="retained">Retained anonymised</td>
+        <td>Up to 12 months, then deleted. Your name is removed — the event record remains so other team members' history is preserved.</td>
+      </tr>
+      <tr>
+        <td>Aggregated, anonymised usage logs</td>
+        <td class="retained">Retained anonymised</td>
+        <td>Up to 12 months. These contain no personal identifiers.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Your personal data is permanently deleted within <strong>30 days</strong> of your
+    deletion request (usually immediately). Anonymised event records that other team
+    members depend on may be retained for up to 12 months before being purged.
+  </p>
+
+  <h2>Questions?</h2>
+
+  <p>
+    Contact our privacy team at
+    <a href="mailto:privacy@tiraapp.nz">privacy@tiraapp.nz</a>.
+    We respond to all requests within 5 working days.
+  </p>
+
+</main>
+
+<footer>
+  &copy; 2025 TIRA &mdash; Made in Aotearoa 🌿 &mdash;
+  <a href="/privacy">Privacy Policy</a> &mdash;
+  <a href="mailto:privacy@tiraapp.nz">privacy@tiraapp.nz</a>
+</footer>
+
+</body>
+</html>

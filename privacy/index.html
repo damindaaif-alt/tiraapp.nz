@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — TIRA</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f8f4ed;
+      color: #1a1a1a;
+      line-height: 1.7;
+    }
+
+    header {
+      background: #1a3a2a;
+      padding: 28px 24px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: 8px;
+    }
+    header p {
+      color: #52b788;
+      margin-top: 4px;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    .updated {
+      font-size: 0.85rem;
+      color: #777;
+      margin-bottom: 32px;
+    }
+
+    h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #1a3a2a;
+      margin-top: 36px;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid #52b788;
+    }
+
+    p { margin-bottom: 14px; }
+
+    ul {
+      margin: 10px 0 14px 20px;
+    }
+    ul li { margin-bottom: 6px; }
+
+    .highlight {
+      background: #1a3a2a;
+      color: #fff;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 32px 0;
+    }
+    .highlight p { margin: 0; color: #f8f4ed; }
+    .highlight strong { color: #52b788; }
+
+    a { color: #1a3a2a; font-weight: 600; }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 0.8rem;
+      color: #999;
+      border-top: 1px solid #e0dbd2;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>TIRA</h1>
+  <p>Your team, together</p>
+</header>
+
+<main>
+  <p class="updated">Last updated: 1 June 2025</p>
+
+  <p>
+    TIRA ("we", "us", "our") is a team management app built for New Zealand
+    community sports coaches, parents, and players. We take your privacy
+    seriously — especially when it comes to children's data. This policy
+    explains what we collect, why, and how you can control or delete it.
+  </p>
+
+  <p>
+    TIRA is operated by Daminda Fernando and complies with the
+    <strong>New Zealand Privacy Act 2020</strong>.
+  </p>
+
+  <div class="highlight">
+    <p>
+      <strong>The short version:</strong> We collect only what's needed to
+      run your team. We never sell your data. Children's data is minimised
+      by design — we store only a first name and date of birth. You can
+      delete everything at any time from Profile → Privacy Dashboard.
+    </p>
+  </div>
+
+  <h2>1. What we collect</h2>
+
+  <p><strong>When you sign up (coaches and parents):</strong></p>
+  <ul>
+    <li>Phone number — used for login via SMS verification</li>
+    <li>Full name — displayed to your teammates</li>
+    <li>Email address — for account recovery and notifications (optional)</li>
+    <li>Profile photo — displayed in the app (optional)</li>
+    <li>Device push token — used to send you team notifications</li>
+  </ul>
+
+  <p><strong>When you register a child (parents only):</strong></p>
+  <ul>
+    <li>Child's first name only — last name is never stored</li>
+    <li>Date of birth — used to verify age eligibility</li>
+    <li>Jersey number — optional, for team organisation</li>
+    <li>Emergency contact name and phone number</li>
+    <li>Medical notes — stored encrypted, only accessible to coaches you authorise</li>
+  </ul>
+
+  <p><strong>When you use the app:</strong></p>
+  <ul>
+    <li>RSVP responses and attendance records for team events</li>
+    <li>Messages sent within team chats</li>
+    <li>Event details you create (title, time, location, opponent)</li>
+    <li>Transport preferences (whether you need a ride to an event)</li>
+  </ul>
+
+  <h2>2. Why we collect it</h2>
+  <p>Every piece of data we hold has a specific purpose:</p>
+  <ul>
+    <li><strong>Phone number</strong> — passwordless login, no password to forget or lose</li>
+    <li><strong>Name and photo</strong> — so your teammates know who you are</li>
+    <li><strong>Push token</strong> — so coaches can notify the team about schedule changes</li>
+    <li><strong>Children's details</strong> — so coaches know who is attending and can respond to emergencies</li>
+    <li><strong>Medical notes</strong> — so coaches can keep children safe during events</li>
+    <li><strong>Attendance and RSVPs</strong> — so coaches can plan effectively</li>
+  </ul>
+  <p>We do not use your data for advertising, profiling, or any purpose other than running your team.</p>
+
+  <h2>3. Children's data</h2>
+  <p>
+    TIRA stores data about children under 18 on behalf of their parents or
+    guardians. We apply extra protections to this data:
+  </p>
+  <ul>
+    <li>Only a child's <strong>first name</strong> is stored — never their last name</li>
+    <li>Medical information is <strong>encrypted at rest</strong> using Supabase Vault</li>
+    <li>Every time a coach views a child's medical notes, the access is <strong>logged</strong></li>
+    <li>Only coaches on the same team can see a child's records</li>
+    <li>Parents can view, update, or delete their child's profile at any time from the Team tab</li>
+  </ul>
+  <p>
+    We do not knowingly allow children to create their own accounts. Children's
+    profiles are always created and managed by a parent or guardian.
+  </p>
+
+  <h2>4. Who we share data with</h2>
+  <p>We use a small number of trusted services to run TIRA:</p>
+  <ul>
+    <li><strong>Supabase</strong> (supabase.com) — database, authentication, and file storage. Hosted in Sydney, Australia.</li>
+    <li><strong>Expo / EAS</strong> (expo.dev) — push notification delivery</li>
+    <li><strong>Groq</strong> (groq.com) — AI features (event creation, message drafting). Only the text you type is sent — no personal data.</li>
+    <li><strong>Google / Firebase</strong> — push notification delivery on Android</li>
+    <li><strong>Sentry</strong> (sentry.io) — crash reporting. Errors are anonymised before sending.</li>
+  </ul>
+  <p>We do not sell, rent, or share your personal data with any other party.</p>
+
+  <h2>5. Data storage and security</h2>
+  <ul>
+    <li>All data is stored in Supabase's Sydney (ap-southeast-2) data centre</li>
+    <li>All connections are encrypted in transit (TLS)</li>
+    <li>Medical notes are encrypted at rest using Supabase Vault</li>
+    <li>Access to data is controlled by Row Level Security — you can only see data for teams you belong to</li>
+    <li>We do not store any payment information</li>
+  </ul>
+
+  <h2>6. Your rights (NZ Privacy Act 2020)</h2>
+  <p>Under the NZ Privacy Act 2020 you have the right to:</p>
+  <ul>
+    <li><strong>Access</strong> — request a copy of all personal information we hold about you</li>
+    <li><strong>Correction</strong> — ask us to correct inaccurate information</li>
+    <li><strong>Deletion</strong> — delete your account and all associated data</li>
+    <li><strong>Portability</strong> — request your data in a machine-readable format</li>
+  </ul>
+  <p>
+    You can exercise most of these rights directly in the app at
+    <strong>Profile → Privacy Dashboard</strong>. For anything not covered
+    there, email us at <a href="mailto:privacy@tiraapp.nz">privacy@tiraapp.nz</a>.
+  </p>
+
+  <h2>7. Data retention</h2>
+  <ul>
+    <li>Active account data is retained while your account is active</li>
+    <li>If you delete your account, all personal data is permanently deleted within 30 days</li>
+    <li>Team event history (anonymised) may be retained for up to 12 months after an account is deleted</li>
+    <li>Children's profiles are deleted immediately when a parent requests deletion</li>
+  </ul>
+
+  <h2>8. Cookies and tracking</h2>
+  <p>
+    TIRA is a mobile app and does not use cookies. We do not use any
+    third-party advertising trackers or analytics services that track you
+    across apps or websites.
+  </p>
+
+  <h2>9. Changes to this policy</h2>
+  <p>
+    If we make material changes to this policy we will notify you via the app
+    before the changes take effect. The "last updated" date at the top of this
+    page will always reflect the most recent version.
+  </p>
+
+  <h2>10. Contact us</h2>
+  <p>
+    For any privacy questions or requests, contact us at:<br />
+    <a href="mailto:privacy@tiraapp.nz">privacy@tiraapp.nz</a>
+  </p>
+  <p>
+    We will respond to all privacy requests within 20 working days as required
+    by the NZ Privacy Act 2020.
+  </p>
+
+</main>
+
+<footer>
+  &copy; 2025 TIRA &mdash; Made in Aotearoa 🌿 &mdash;
+  <a href="mailto:privacy@tiraapp.nz">privacy@tiraapp.nz</a>
+</footer>
+
+</body>
+</html>
