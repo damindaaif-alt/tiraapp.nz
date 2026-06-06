@@ -73,6 +73,20 @@
 
     a { color: #1a3a2a; font-weight: 600; }
 
+    nav {
+      background: #1a3a2a;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      height: 60px;
+      gap: 24px;
+    }
+    nav a.nav-home { font-size: 1.1rem; font-weight: 900; color: #fff; letter-spacing: 5px; text-decoration: none; }
+    nav a.nav-home span { color: #52b788; }
+    nav a.nav-link { font-size: .85rem; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; }
+    nav a.nav-link:hover { color: #52b788; }
+    nav .nav-spacer { flex: 1; }
+
     footer {
       text-align: center;
       padding: 24px;
@@ -83,6 +97,13 @@
   </style>
 </head>
 <body>
+
+<nav>
+  <a href="/" class="nav-home">TIRA<span>.</span></a>
+  <div class="nav-spacer"></div>
+  <a href="/" class="nav-link">Home</a>
+  <a href="/support/" class="nav-link">Support</a>
+</nav>
 
 <header>
   <h1>TIRA</h1>
@@ -100,7 +121,7 @@
   </p>
 
   <p>
-    TIRA is operated by Daminda Fernando and complies with the
+    TIRA is operated by Aurodox Ltd and complies with the
     <strong>New Zealand Privacy Act 2020</strong>.
   </p>
 
