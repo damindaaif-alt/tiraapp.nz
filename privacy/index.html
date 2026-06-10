@@ -115,7 +115,7 @@
 </header>
 
 <main>
-  <p class="updated">Last updated: 7 June 2026</p>
+  <p class="updated">Last updated: 11 June 2026</p>
 
   <p>
     TIRA ("we", "us", "our") is a team management app built for New Zealand
@@ -142,9 +142,9 @@
 
   <p><strong>When you sign up (coaches and parents):</strong></p>
   <ul>
-    <li>Phone number — used for login via SMS verification code</li>
+    <li>Email address — used for passwordless sign-in via an 8-digit one-time code (default method, free)</li>
+    <li>Mobile number — used for passwordless sign-in via a 6-digit SMS one-time code (optional alternative to email)</li>
     <li>Full name — displayed to your teammates</li>
-    <li>Email address — used for login via email verification code, or for account recovery and notifications. Either phone or email is sufficient to sign in.</li>
     <li>Profile photo — displayed in the app (optional)</li>
     <li>Device push token — used to send you team notifications</li>
   </ul>
@@ -169,7 +169,7 @@
   <h2>2. Why we collect it</h2>
   <p>Every piece of data we hold has a specific purpose:</p>
   <ul>
-    <li><strong>Phone number</strong> — passwordless login, no password to forget or lose</li>
+    <li><strong>Email address / mobile number</strong> — passwordless sign-in via one-time code; no password is ever created or stored</li>
     <li><strong>Name and photo</strong> — so your teammates know who you are</li>
     <li><strong>Push token</strong> — so coaches can notify the team about schedule changes</li>
     <li><strong>Children's details</strong> — so coaches know who is attending and can respond to emergencies</li>
@@ -212,6 +212,7 @@
     <li>All data is stored in Supabase's Sydney (ap-southeast-2) data centre</li>
     <li>All connections are encrypted in transit (TLS)</li>
     <li>Medical notes are encrypted at rest using Supabase Vault</li>
+    <li>Your session token is encrypted on your device using your phone's hardware-backed secure storage (iOS Keychain / Android Keystore) — it is never stored in plain text on your device</li>
     <li>Access to data is controlled by Row Level Security — you can only see data for teams you belong to</li>
     <li>We do not store any payment information</li>
   </ul>
