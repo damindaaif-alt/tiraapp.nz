@@ -87,7 +87,8 @@
   <script>
     (function () {
       var ua = navigator.userAgent || '';
-      var isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+      var isIPadOSDesktopUA = /Macintosh/.test(ua) && navigator.maxTouchPoints > 1;
+      var isIOS = (/iPad|iPhone|iPod/.test(ua) || isIPadOSDesktopUA) && !window.MSStream;
       var isAndroid = /Android/.test(ua);
       var target = null;
       if (isIOS) target = 'https://apps.apple.com/nz/app/tira-sports/id6776856453';
