@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get TIRA</title>
+  <meta name="description" content="Download TIRA — the free team app for community sports." />
+  <meta name="robots" content="noindex" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green: #1a3a2a;
+      --green-mid: #245235;
+      --mint: #52b788;
+      --cream: #f8f4ed;
+      --muted: #5a6672;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--cream);
+      color: var(--green);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+    }
+    .card { max-width: 380px; }
+    .logo { font-size: 1.6rem; font-weight: 800; margin-bottom: 4px; }
+    .logo span { color: var(--mint); }
+    p.tagline { color: var(--muted); margin-bottom: 32px; font-size: 1rem; }
+    .btns { display: flex; flex-direction: column; gap: 12px; }
+    .btn-store {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--green);
+      color: #fff;
+      padding: 14px 22px;
+      border-radius: 14px;
+      text-decoration: none;
+      box-shadow: 0 4px 18px rgba(26,58,42,.28);
+      transition: background .2s, transform .15s;
+    }
+    .btn-store:hover { background: var(--green-mid); transform: translateY(-2px); }
+    .btn-store-label { line-height: 1.15; text-align: left; }
+    .btn-store-small { font-size: .68rem; opacity: .75; display: block; }
+    .btn-store-big { font-size: .9rem; font-weight: 700; }
+    .btn-ios { background: #000; box-shadow: 0 4px 18px rgba(0,0,0,.28); }
+    .btn-ios:hover { background: #1a1a1a; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">TIRA<span>.</span></div>
+    <p class="tagline">Taking you to the app…</p>
+    <div class="btns">
+      <a href="https://play.google.com/store/apps/details?id=nz.tira.app" class="btn-store">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M3.18 1.77C2.46 2.14 2 2.9 2 3.78v16.44c0 .88.46 1.64 1.18 2.01l9.21-9.21v-.22L3.18 3.72v-1.95z" fill="#52b788"/>
+          <path d="M15.46 15.54l-3.07-3.07v-.22l3.07-3.07 3.71 2.11c1.04.59 1.04 1.55 0 2.14l-3.71 2.11z" fill="#f9c74f"/>
+          <path d="M15.53 15.5L12.39 12.35 3.18 21.23c.34.18.75.16 1.12-.06l11.23-5.67z" fill="#ea4335"/>
+          <path d="M15.53 8.5L4.3 2.83C3.93 2.61 3.52 2.59 3.18 2.77l9.21 9.58 3.14-3.85z" fill="#4285f4"/>
+        </svg>
+        <div class="btn-store-label">
+          <span class="btn-store-small">Get it on</span>
+          <span class="btn-store-big">Google Play</span>
+        </div>
+      </a>
+      <a href="https://apps.apple.com/nz/app/tira-sports/id6776856453" class="btn-store btn-ios" aria-label="Download TIRA on the iOS App Store">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+        </svg>
+        <div class="btn-store-label">
+          <span class="btn-store-small">Download on the</span>
+          <span class="btn-store-big">App Store</span>
+        </div>
+      </a>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var ua = navigator.userAgent || '';
+      var isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+      var isAndroid = /Android/.test(ua);
+      var target = null;
+      if (isIOS) target = 'https://apps.apple.com/nz/app/tira-sports/id6776856453';
+      else if (isAndroid) target = 'https://play.google.com/store/apps/details?id=nz.tira.app';
+      if (target) window.location.replace(target);
+      else document.querySelector('.tagline').textContent = 'Choose your platform:';
+    })();
+  </script>
+</body>
+</html>
