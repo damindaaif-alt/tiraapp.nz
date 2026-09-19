@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quick Start Guide — TIRA</title>
+  <meta name="description" content="Get set up on TIRA in about five minutes — for parents, guardians and players. No tech skills needed." />
+  <meta property="og:title" content="TIRA Quick Start Guide" />
+  <meta property="og:description" content="Get set up on TIRA in about five minutes — for parents, guardians and players." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://tiraapp.nz/guide/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:      #1a3a2a;
+      --green-mid:  #245235;
+      --mint:       #52b788;
+      --mint-light: #b7e4c7;
+      --mint-tint:  #eaf6f0;
+      --mint-ink:   #2d7a52;
+      --clay-tint:  #fdf1e2;
+      --clay-ink:   #c9791f;
+      --cream:      #f8f4ed;
+      --white:      #ffffff;
+      --text:       #1a1a1a;
+      --muted:      #5a6672;
+      --border:     #e7e0d3;
+      --shadow:     0 4px 24px rgba(26,58,42,.08);
+    }
+
+    html, body { overflow-x: hidden; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+    :focus-visible { outline: 2px solid var(--mint); outline-offset: 2px; }
+
+    /* ── NAV ──────────────────────────────────── */
+    nav {
+      background: var(--green);
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      height: 60px;
+      gap: 28px;
+    }
+    .nav-home { font-size: 1.1rem; font-weight: 900; color: #fff; letter-spacing: 5px; text-decoration: none; flex-shrink: 0; }
+    .nav-home span { color: var(--mint); }
+    .nav-links { display: flex; gap: 24px; list-style: none; flex: 1; }
+    .nav-links a { font-size: .85rem; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; }
+    .nav-links a:hover { color: var(--mint); }
+    .nav-links a.current { color: var(--mint); }
+
+    /* ── HEADER ───────────────────────────────── */
+    header {
+      background: linear-gradient(160deg, var(--green) 0%, var(--green-mid) 100%);
+      padding: 56px 24px 48px;
+    }
+    .header-inner { max-width: 900px; margin: 0 auto; }
+    .wordmark { color: var(--mint); font-size: .78rem; font-weight: 700; letter-spacing: 5px; margin-bottom: 10px; }
+    header h1 {
+      font-size: clamp(2rem, 4.5vw, 2.8rem);
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+    header .subtitle { font-size: 1.02rem; color: rgba(255,255,255,.72); line-height: 1.65; max-width: 520px; margin-bottom: 28px; }
+
+    .header-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .btn-store {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.22);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: background .2s, transform .15s;
+    }
+    .btn-store:hover { background: rgba(255,255,255,.18); transform: translateY(-1px); }
+    .btn-store-label { line-height: 1.1; }
+    .btn-store-small { font-size: .62rem; opacity: .8; display: block; }
+    .btn-store-big   { font-size: .82rem; font-weight: 700; }
+    .btn-pdf {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,.75);
+      text-decoration: none;
+      font-size: .85rem;
+      font-weight: 600;
+      padding: 10px 4px;
+      border-bottom: 1px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .btn-pdf:hover { color: var(--mint); border-color: var(--mint); }
+
+    /* ── MAIN ─────────────────────────────────── */
+    main { max-width: 900px; margin: 0 auto; padding: 40px 24px 24px; }
+
+    .step-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px 26px;
+      box-shadow: var(--shadow);
+    }
+    .card.full { margin-top: 20px; }
+
+    .card-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .num {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--green); color: #fff;
+      font-size: .85rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .card-head h2 {
+      font-size: .78rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; color: var(--green);
+      line-height: 1.4;
+    }
+    .card .lede { font-size: 1.12rem; font-weight: 700; color: var(--green); margin-bottom: 4px; }
+    .card .kicker { font-size: .88rem; color: var(--muted); margin-bottom: 14px; line-height: 1.5; }
+    .card .kicker b { color: var(--green); font-weight: 600; }
+
+    ol { list-style: none; counter-reset: step; }
+    ol li {
+      counter-increment: step;
+      position: relative;
+      padding-left: 30px;
+      margin-bottom: 12px;
+      font-size: .9rem;
+      color: var(--text);
+      line-height: 1.55;
+    }
+    ol li::before {
+      content: counter(step);
+      position: absolute; left: 0; top: 1px;
+      width: 20px; height: 20px; border-radius: 50%;
+      background: var(--mint-tint); color: var(--mint-ink);
+      font-size: .72rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    ol li b { font-weight: 600; }
+    ol li:last-child { margin-bottom: 0; }
+
+    .tip {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px dashed var(--border);
+      font-size: .84rem;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+    .tip b { color: var(--green); }
+
+    /* Step 3 — linking */
+    .link-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; }
+    .link-card { border-radius: 16px; padding: 18px 20px; }
+    .link-card.guardian { background: var(--mint-tint); }
+    .link-card.player { background: var(--clay-tint); }
+    .badge {
+      display: inline-block; font-size: .66rem; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase;
+      padding: 4px 11px; border-radius: 999px; color: #fff;
+      margin-bottom: 10px;
+    }
+    .badge.guardian { background: var(--mint-ink); }
+    .badge.player { background: var(--clay-ink); }
+    .link-card h3 { font-size: .95rem; font-weight: 700; color: var(--green); margin-bottom: 6px; }
+    .link-card p { font-size: .84rem; line-height: 1.55; margin-bottom: 12px; color: #33403a; }
+    .link-card .how {
+      font-size: .78rem; line-height: 1.55; color: #55625b;
+      border-top: 1px solid rgba(0,0,0,.08); padding-top: 12px;
+    }
+    .link-card .how p { margin-bottom: 8px; }
+    .link-card .how p:last-child { margin-bottom: 0; }
+    .link-card .how b { color: var(--green); font-weight: 600; }
+
+    .skip-note { font-size: .84rem; color: var(--muted); margin-top: 16px; line-height: 1.55; }
+
+    .callout {
+      margin-top: 20px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px 22px;
+      display: flex; align-items: flex-start; gap: 16px;
+      box-shadow: var(--shadow);
+    }
+    .callout .tag {
+      flex-shrink: 0;
+      background: var(--green); color: #fff;
+      font-size: .66rem; font-weight: 700; letter-spacing: 1px;
+      padding: 5px 12px; border-radius: 999px;
+      margin-top: 2px;
+    }
+    .callout p { font-size: .88rem; line-height: 1.6; color: #33403a; }
+    .callout b { color: var(--green); font-weight: 600; }
+
+    .next-link {
+      margin-top: 28px;
+      text-align: center;
+      font-size: .88rem;
+      color: var(--muted);
+    }
+    .next-link a { color: var(--green); font-weight: 600; text-decoration: none; }
+    .next-link a:hover { color: var(--mint-ink); }
+
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      font-size: .8rem;
+      color: #999;
+      border-top: 1px solid var(--border);
+      margin-top: 24px;
+    }
+    footer a { color: #999; }
+    footer a:hover { color: var(--green); }
+
+    /* ── RESPONSIVE ───────────────────────────── */
+    @media (max-width: 720px) {
+      .step-grid { grid-template-columns: 1fr; }
+      .link-row { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      header { padding: 44px 20px 36px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-home">TIRA<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/guide/" class="current">Guide</a></li>
+    <li><a href="/support/">Support</a></li>
+    <li><a href="/privacy/">Privacy</a></li>
+  </ul>
+</nav>
+
+<header>
+  <div class="header-inner">
+    <div class="wordmark">T I R A</div>
+    <h1>Quick Start Guide</h1>
+    <p class="subtitle">For parents, guardians and players. Get set up in about five minutes, step by step — no tech skills needed.</p>
+    <div class="header-actions">
+      <a href="https://play.google.com/store/apps/details?id=nz.tira.app" class="btn-store">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M3.18 1.77C2.46 2.14 2 2.9 2 3.78v16.44c0 .88.46 1.64 1.18 2.01l9.21-9.21v-.22L3.18 3.72v-1.95z" fill="#52b788"/>
+          <path d="M15.46 15.54l-3.07-3.07v-.22l3.07-3.07 3.71 2.11c1.04.59 1.04 1.55 0 2.14l-3.71 2.11z" fill="#f9c74f"/>
+          <path d="M15.53 15.5L12.39 12.35 3.18 21.23c.34.18.75.16 1.12-.06l11.23-5.67z" fill="#ea4335"/>
+          <path d="M15.53 8.5L4.3 2.83C3.93 2.61 3.52 2.59 3.18 2.77l9.21 9.58 3.14-3.85z" fill="#4285f4"/>
+        </svg>
+        <div class="btn-store-label">
+          <span class="btn-store-small">Get it on</span>
+          <span class="btn-store-big">Google Play</span>
+        </div>
+      </a>
+      <a href="https://apps.apple.com/nz/app/tira-sports/id6776856453" class="btn-store" aria-label="Download TIRA on the iOS App Store">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+        </svg>
+        <div class="btn-store-label">
+          <span class="btn-store-small">Download on the</span>
+          <span class="btn-store-big">App Store</span>
+        </div>
+      </a>
+      <a href="/guide/TIRA-Quick-Start-Guide.pdf" class="btn-pdf">
+        Download as PDF ↓
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <div class="step-grid">
+    <div class="card">
+      <div class="card-head"><div class="num">1</div><h2>Create your account and sign in</h2></div>
+      <div class="lede">No passwords, ever</div>
+      <ol>
+        <li>Open the TIRA app. If your coach gave you a code, tap <b>Join a team with a code</b> and enter it. We'll then ask if you're a player or a parent or guardian, so your coach knows who's who. Already set up? Tap <b>I already have an account</b> instead.</li>
+        <li>Enter your <b>email address</b> (the easiest way) or your mobile number.</li>
+        <li>We'll send you a code to type in: 8 digits by email, or 6 digits by text message. Type it in and you're signed in.</li>
+      </ol>
+      <div class="tip"><b>Tip:</b> Signing in on a new phone? Just do these steps again. Everything in your account will still be there.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><div class="num">2</div><h2>Register your child</h2></div>
+      <div class="kicker"><b>Team tab</b>, then <b>Register my child</b>. Or <b>Profile tab</b>, then <b>My Children</b>.</div>
+      <ol>
+        <li>Enter their <b>first name</b> and <b>date of birth</b>. That's all we need. No surname and no photo.</li>
+        <li>If you'd like to add an emergency contact and medical notes, fill in the box. This is kept private and locked. Coaches can see it only if the toggle is ON — you'll find that under <b>Profile tab</b>, then <b>Privacy Dashboard</b>, and it's off until you turn it on.</li>
+        <li>Tick the two boxes to confirm you're the parent or guardian and that you agree to the Privacy Policy, then tap <b>Done</b>.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="card full">
+    <div class="card-head"><div class="num">3</div><h2>Linking accounts: two different things</h2></div>
+    <div class="lede">Guardian link and player link sound similar, but they are not the same</div>
+    <div class="kicker">Both connect a TIRA account to a player's profile on the team. The difference is whose account it is.</div>
+
+    <div class="link-row">
+      <div class="link-card guardian">
+        <span class="badge guardian">Guardian link</span>
+        <h3>For parents and guardians</h3>
+        <p>Connects your account to your child's profile, so you can see their schedule and manage their privacy settings.</p>
+        <div class="how">
+          <p><b>Joined with a team code?</b> After you choose Parent or Guardian, we'll show you the team's players. Tap your child's name, then tap <b>That's my child</b>.</p>
+          <p><b>Got sent an invite instead?</b> Go to <b>Profile tab</b>, then <b>Enter invite code</b>, and paste it in.</p>
+        </div>
+      </div>
+      <div class="link-card player">
+        <span class="badge player">Player link</span>
+        <h3>For players themselves, aged 15 and over</h3>
+        <p>Connects your own TIRA account to the profile your coach already created for you.</p>
+        <div class="how"><p>When you join, tap your own name on the "Is that you?" screen, then tap <b>That's me</b>.</p></div>
+      </div>
+    </div>
+
+    <div class="skip-note">Can't find your name on either screen? That's fine — tap <b>Skip for now</b>. You can register or link later from the Profile tab.</div>
+  </div>
+
+  <div class="callout">
+    <div class="tag">TIP</div>
+    <p><b>Adding a second parent or guardian.</b> On the Team tab, under your child's name, tap <b>Add another guardian</b> to invite a co-parent, grandparent or caregiver. They'll see the same schedule, can RSVP, and manage privacy too.</p>
+  </div>
+
+  <p class="next-link">Still stuck on something? Head to <a href="/support/">Support</a> — or in the app, go to <b>Profile</b>, then <b>Report a problem</b>.</p>
+
+</main>
+
+<footer>
+  &copy; 2026 TIRA &mdash; Made in Aotearoa 🌿 &mdash;
+  <a href="mailto:support@tiraapp.nz">support@tiraapp.nz</a>
+</footer>
+
+</body>
+</html>
