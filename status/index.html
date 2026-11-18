@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Status — TIRA</title>
+  <meta name="description" content="Is TIRA working right now? Live status for the TIRA team app.">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f8f4ed; color: #1a1a1a; line-height: 1.7; }
+    nav { background: #1a3a2a; padding: 0 24px; display: flex; align-items: center; height: 60px; gap: 24px; }
+    nav a.nav-home { font-size: 1.1rem; font-weight: 900; color: #fff; letter-spacing: 5px; text-decoration: none; }
+    nav a.nav-home span { color: #52b788; }
+    nav a.nav-link { font-size: .85rem; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; }
+    nav a.nav-link:hover { color: #52b788; }
+    nav .nav-spacer { flex: 1; }
+    main { max-width: 720px; margin: 0 auto; padding: 40px 24px 80px; }
+    h1 { font-size: 1.6rem; color: #1a3a2a; margin-bottom: 18px; }
+    h2 { font-size: 1.15rem; font-weight: 700; color: #1a3a2a; margin-top: 36px; margin-bottom: 10px;
+      padding-bottom: 6px; border-bottom: 2px solid #52b788; }
+    p { margin-bottom: 14px; }
+    a { color: #1a3a2a; font-weight: 600; }
+
+    .status { border-radius: 12px; padding: 22px 24px; border: 1px solid #e0dbd2; background: #fff;
+      display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; align-items: start; }
+    .dot { width: 14px; height: 14px; border-radius: 50%; margin-top: 7px; background: #52b788; }
+    .status .label { font-weight: 700; font-size: 1.1rem; color: #1a3a2a; }
+    .status .message { grid-column: 2; margin: 0; }
+    .status .updated { grid-column: 2; font-size: .85rem; color: #5b6660; margin: 0; }
+    .status.outage { background: #fdecec; border-color: #f5c6c6; }
+    .status.outage .dot { background: #c62828; }
+    .status.outage .label { color: #7f1d1d; }
+    .status.degraded { background: #fef3c7; border-color: #f0e4be; }
+    .status.degraded .dot { background: #d97706; }
+    .status.degraded .label { color: #5c4a21; }
+    .status.info .dot { background: #1a3a2a; }
+    .status.resolved { background: #eaf7ee; }
+    .status.unknown .dot { background: #9ca3af; }
+
+    footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #6b6b6b; border-top: 1px solid #e0dbd2; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-home">TIRA<span>.</span></a>
+  <div class="nav-spacer"></div>
+  <a href="/" class="nav-link">Home</a>
+  <a href="/support/" class="nav-link">Support</a>
+  <a href="/privacy/" class="nav-link">Privacy</a>
+</nav>
+
+<main>
+  <h1>Is TIRA working?</h1>
+
+  <!-- Filled in from /status.json, the same file the app reads. -->
+  <div id="status" class="status unknown" role="status" aria-live="polite">
+    <span class="dot" aria-hidden="true"></span>
+    <span class="label">Checking…</span>
+    <p class="message">If this doesn't change, refresh the page.</p>
+  </div>
+
+  <h2>If something isn't working</h2>
+  <p>
+    When TIRA has a problem, we post it here first, and the app shows the same notice at the top of
+    the Schedule. We update this page as things change and say when it's fixed.
+  </p>
+  <p>
+    While TIRA is down, the app still shows your team's schedule as it was last loaded. Answers and
+    messages need TIRA to be back up before they'll go through.
+  </p>
+  <p>
+    Something wrong that isn't listed here? Use <strong>Profile → Report a problem</strong> in the app,
+    or email <a href="mailto:support@tiraapp.nz">support@tiraapp.nz</a>.
+  </p>
+</main>
+
+<footer>
+  &copy; 2026 TIRA &mdash; Made in Aotearoa 🌿 &mdash;
+  <a href="/privacy/">Privacy Policy</a> &middot;
+  <a href="/terms/">Terms of Use</a> &middot;
+  <a href="/support/">Support</a>
+</footer>
+
+<script>
+  // Same rules as the app (services/serviceStatus.ts): known levels only,
+  // plain text (textContent, never innerHTML), and an expiry no more than
+  // 7 days away. Anything else reads as "all working".
+  (function () {
+    var LABELS = {
+      ok: 'All working',
+      info: 'Notice',
+      degraded: 'Some things aren’t working',
+      outage: 'TIRA isn’t working right now',
+      resolved: 'Fixed',
+      unknown: 'Couldn’t check'
+    };
+    var box = document.getElementById('status');
+    function show(level, message, updated) {
+      box.className = 'status ' + level;
+      box.querySelector('.label').textContent = LABELS[level] || LABELS.ok;
+      box.querySelector('.message').textContent = message;
+      var old = box.querySelector('.updated');
+      if (old) old.remove();
+      if (updated) {
+        var p = document.createElement('p');
+        p.className = 'updated';
+        p.textContent = 'Updated ' + new Date(updated).toLocaleString('en-NZ',
+          { timeZone: 'Pacific/Auckland', weekday: 'short', day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit' });
+        box.appendChild(p);
+      }
+    }
+    function allGood() { show('ok', 'No known problems. If something isn’t working for you, let us know below.', null); }
+
+    fetch('/status.json?m=' + Math.floor(Date.now() / 60000), { cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (s) {
+        var levels = ['info', 'degraded', 'outage', 'resolved'];
+        if (!s || levels.indexOf(s.level) < 0 || typeof s.message !== 'string' || !s.message.trim()) return allGood();
+        var now = Date.now(), exp = Date.parse(s.expires), upd = Date.parse(s.updated);
+        if (isNaN(exp) || isNaN(upd) || exp <= now || exp - now > 7 * 24 * 3600 * 1000) return allGood();
+        show(s.level, s.message.replace(/\s+/g, ' ').trim().slice(0, 200), s.updated);
+      })
+      .catch(function () {
+        show('unknown', 'We couldn’t check right now. Try refreshing in a minute.', null);
+      });
+  })();
+</script>
+
+</body>
+</html>
