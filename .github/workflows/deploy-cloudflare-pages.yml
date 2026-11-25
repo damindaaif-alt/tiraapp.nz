@@ -1,0 +1,41 @@
+# Publishes the site to Cloudflare Pages (project "tiraapp") on every push.
+# main -> production (tiraapp.nz once the custom domain is added);
+# any other branch -> preview at <branch>.tiraapp.pages.dev.
+# Needs repo secrets CLOUDFLARE_API_TOKEN (Account > Cloudflare Pages > Edit)
+# and CLOUDFLARE_ACCOUNT_ID.
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches: ['**']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: false   # why: never drop a status.json edit mid-deploy
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      # why: upload only the website, never repo plumbing (.git, workflows, the
+      # GitHub Pages CNAME file).
+      - name: Stage site files
+        run: |
+          mkdir -p "$RUNNER_TEMP/site"
+          rsync -a --exclude='.git' --exclude='.github' --exclude='CNAME' ./ "$RUNNER_TEMP/site/"
+          test -f "$RUNNER_TEMP/site/status.json"   # the app reads this; never publish without it
+          python3 -c "import json,sys; json.load(open(sys.argv[1]))" "$RUNNER_TEMP/site/status.json"
+
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy ${{ runner.temp }}/site --project-name=tiraapp --branch=${{ github.ref_name }} --commit-dirty=true
