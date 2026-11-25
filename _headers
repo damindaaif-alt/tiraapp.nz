@@ -1,0 +1,15 @@
+# Cloudflare Pages response headers (GitHub Pages ignores this file:
+# Jekyll skips names that start with an underscore).
+# Docs: https://developers.cloudflare.com/pages/configuration/headers/
+
+/*
+  Strict-Transport-Security: max-age=31536000
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+
+# The app reads this to show the owner's service notice (services/serviceStatus.ts).
+# Always re-checked, so a new notice reaches phones within the app's own 1 minute window.
+/status.json
+  Cache-Control: no-cache
