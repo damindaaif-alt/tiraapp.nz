@@ -1,159 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-NZ">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Delete Your Account | TIRA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Delete your account | TIRA</title>
+  <meta name="description" content="How to delete your TIRA account in the app or by email, and exactly what is deleted and what your team keeps." />
+  <link rel="canonical" href="https://tiraapp.nz/delete-account/" />
+  <meta name="theme-color" content="#1a3a2a" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="TIRA" />
+  <meta property="og:title" content="Delete your account | TIRA" />
+  <meta property="og:description" content="How to delete your TIRA account in the app or by email, and exactly what is deleted and what your team keeps." />
+  <meta property="og:url" content="https://tiraapp.nz/delete-account/" />
+  <meta property="og:image" content="https://tiraapp.nz/android-chrome-512x512.png" />
+  <meta name="twitter:card" content="summary" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
+  <link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/site.css">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #f8f4ed;
-      color: #1a1a1a;
-      line-height: 1.7;
-    }
-
-    header {
-      background: #1a3a2a;
-      padding: 28px 24px;
-      text-align: center;
-    }
-    header h1 { font-size: 2rem; font-weight: 900; color: #fff; letter-spacing: 8px; }
-    header p  { color: #52b788; margin-top: 4px; font-size: 0.9rem; letter-spacing: 1px; }
-
-    main {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 40px 24px 80px;
-    }
-
-    h2 {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: #1a3a2a;
-      margin: 36px 0 12px;
-      padding-bottom: 6px;
-      border-bottom: 2px solid #52b788;
-    }
-
-    p  { margin-bottom: 14px; }
-    ul { margin: 10px 0 14px 20px; }
-    ul li { margin-bottom: 8px; }
-
-    .steps {
-      counter-reset: step;
-      list-style: none;
-      margin-left: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .steps li {
-      counter-increment: step;
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      background: #fff;
-      border-radius: 14px;
-      padding: 16px 20px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-    }
-    .steps li::before {
-      content: counter(step);
-      min-width: 32px;
-      height: 32px;
-      background: #1a3a2a;
-      color: #fff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 0.9rem;
-      flex-shrink: 0;
-    }
-    .steps li .step-text strong { display: block; font-size: 0.95rem; color: #1a3a2a; }
-    .steps li .step-text span   { font-size: 0.875rem; color: #555; }
-
-    .alert {
-      background: #1a3a2a;
-      color: #f8f4ed;
-      border-radius: 14px;
-      padding: 20px 24px;
-      margin: 28px 0;
-    }
-    .alert strong { color: #52b788; }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 16px 0 24px;
-      font-size: 0.9rem;
-    }
-    th {
-      background: #1a3a2a;
-      color: #fff;
-      padding: 10px 14px;
-      text-align: left;
-    }
-    td {
-      padding: 10px 14px;
-      border-bottom: 1px solid #e0dbd2;
-      vertical-align: top;
-    }
-    tr:nth-child(even) td { background: #fff; }
-    .deleted  { color: #16A34A; font-weight: 600; }
-    .retained { color: #D97706; font-weight: 600; }
-
-    a { color: #1a3a2a; font-weight: 600; }
-
-    nav {
-      background: #1a3a2a;
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      height: 60px;
-      gap: 24px;
-    }
-    nav a.nav-home { font-size: 1.1rem; font-weight: 900; color: #fff; letter-spacing: 5px; text-decoration: none; }
-    nav a.nav-home span { color: #52b788; }
-    nav a.nav-link { font-size: .85rem; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; }
-    nav a.nav-link:hover { color: #52b788; }
-    nav .nav-spacer { flex: 1; }
-
-    footer {
-      text-align: center;
-      padding: 24px;
-      font-size: 0.8rem;
-      color: #999;
-      border-top: 1px solid #e0dbd2;
-    }
+    .prose .steps { list-style: none; padding: 0; counter-reset: step; display: grid; gap: 12px; }
+    .prose .steps li { counter-increment: step; display: grid; grid-template-columns: 40px 1fr; gap: 16px; align-items: start;
+      background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-m); padding: 16px 20px; margin: 0; }
+    .prose .steps li::before { content: counter(step); width: 40px; height: 40px; border-radius: 50%; background: var(--turf); color: #fff;
+      display: grid; place-items: center; font-weight: 800; font-stretch: 80%; font-size: 1.2rem; }
+    .step-text > strong { display: block; color: var(--turf); }
+    .step-text > span { display: block; color: var(--slate); margin-top: 2px; }
+    td.deleted { color: var(--mint-ink); font-weight: 700; }
+    td.retained { color: var(--amber-ink); font-weight: 700; }
   </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<nav>
-  <a href="/" class="nav-home">TIRA<span>.</span></a>
-  <div class="nav-spacer"></div>
-  <a href="/" class="nav-link">Home</a>
-  <a href="/support/" class="nav-link">Support</a>
-</nav>
-
-<header>
-  <h1>TIRA</h1>
-  <p>Your team, together</p>
+<header class="site-header">
+  <div class="wrap">
+    <a class="wordmark" href="/" aria-label="TIRA home">TIRA<i>.</i></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      Menu
+    </button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <a href="/#features">Features</a>
+      <a href="/clubs/">For clubs</a>
+      <a href="/guide/">Guide</a>
+      <a href="/support/">Help</a>
+      <a class="btn" href="/get/">Get the app</a>
+    </nav>
+  </div>
 </header>
 
-<main>
+<main id="main">
+<div class="turf on-turf page-head">
+  <div class="chalk-lines" aria-hidden="true">
+    <svg viewBox="0 0 1440 400" preserveAspectRatio="xMaxYMid slice" fill="none" stroke="currentColor" stroke-width="3">
+      <line x1="1180" y1="0" x2="1180" y2="400"/>
+      <circle cx="1180" cy="200" r="130"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <h1 class="display">Delete your account</h1>
+    <p class="lede">You can delete your TIRA account at any time, in the app or by email. Here's how, and exactly what happens to your data.</p>
+  </div>
+</div>
 
-  <h2>Delete your TIRA account</h2>
-
-  <p>
+<div class="wrap prose">
+<p>
     You can delete your TIRA account and your personal information at any time,
     directly from the app or by contacting us. Once deleted, your account cannot
     be recovered. Some team records other members rely on stay with the team
@@ -167,7 +81,7 @@
     <a href="mailto:privacy@tiraapp.nz">privacy@tiraapp.nz</a> and we'll help.
   </p>
 
-  <div class="alert">
+  <div class="summary">
     <p>
       <strong>Fastest way:</strong> Delete your account directly inside the TIRA app
       in under 30 seconds, no email required. See the steps below.
@@ -230,6 +144,7 @@
 
   <h2>What data is deleted and what is kept</h2>
 
+  <div class="table-scroll">
   <table>
     <thead>
       <tr>
@@ -276,6 +191,7 @@
       </tr>
     </tbody>
   </table>
+  </div>
 
   <p>
     Deleting your account in the app takes effect <strong>immediately</strong>. If you
@@ -290,15 +206,49 @@
     <a href="mailto:privacy@tiraapp.nz">privacy@tiraapp.nz</a>.
     We respond to all requests within 5 working days.
   </p>
-
+</div>
 </main>
 
-<footer>
-  &copy; 2026 TIRA &mdash; Made in Aotearoa 🌿 &mdash;
-  <a href="/privacy/">Privacy Policy</a> &middot;
-  <a href="/terms/">Terms of Use</a> &middot;
-  <a href="mailto:privacy@tiraapp.nz">privacy@tiraapp.nz</a>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div class="about">
+        <a class="wordmark" href="/" aria-label="TIRA home">TIRA<i>.</i></a>
+        <p>The free team app for community sport. Made in Aotearoa New Zealand.</p>
+      </div>
+      <div>
+        <h2>The app</h2>
+        <ul>
+          <li><a href="/get/">Get the app</a></li>
+          <li><a href="/guide/">Quick start guide</a></li>
+          <li><a href="/support/">Help and support</a></li>
+          <li><a href="/status/">Is TIRA working?</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Clubs and sponsors</h2>
+        <ul>
+          <li><a href="/clubs/">TIRA for clubs</a></li>
+          <li><a href="/partners/">Become a partner</a></li>
+          <li><a href="/support-tira/">Help keep TIRA free</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Your data</h2>
+        <ul>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Use</a></li>
+          <li><a href="/delete-account/">Delete your account</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <p>&copy; 2026 TIRA. Operated by Aurodox Ltd.</p>
+      <p><a href="mailto:support@tiraapp.nz">support@tiraapp.nz</a></p>
+    </div>
+  </div>
 </footer>
 
+<script src="/assets/site.js" defer></script>
 </body>
 </html>

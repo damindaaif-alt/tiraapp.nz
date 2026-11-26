@@ -1,1173 +1,529 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-NZ">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TIRA | Your team, together</title>
-  <meta name="description" content="The free team app for NZ community sports. Keep coaches, parents and players connected: schedule, RSVP, messages, and more." />
-  <meta property="og:title" content="TIRA | Your team, together" />
-  <meta property="og:description" content="The free team app for NZ community sports." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TIRA | The free team app for community sport</title>
+  <meta name="description" content="TIRA is the free team app for community sport in Aotearoa. One schedule, a one-tap answer from every player and parent, and reminders sent for you. No ads." />
+  <link rel="canonical" href="https://tiraapp.nz/" />
+  <meta name="theme-color" content="#1a3a2a" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://tiraapp.nz" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <meta property="og:site_name" content="TIRA" />
+  <meta property="og:title" content="TIRA | The free team app for community sport" />
+  <meta property="og:description" content="One schedule, a one-tap answer from every player and parent, and reminders sent for you. Free, with no ads." />
+  <meta property="og:url" content="https://tiraapp.nz/" />
+  <meta property="og:image" content="https://tiraapp.nz/android-chrome-512x512.png" />
+  <meta property="og:locale" content="en_NZ" />
+  <meta name="twitter:card" content="summary" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "TIRA Sports",
+    "operatingSystem": "Android, iOS",
+    "applicationCategory": "SportsApplication",
+    "description": "The free team app for community sport: schedule, availability, reminders, updates and team chat.",
+    "url": "https://tiraapp.nz/",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "NZD" },
+    "publisher": { "@type": "Organization", "name": "Aurodox Ltd", "url": "https://tiraapp.nz/" },
+    "sameAs": [
+      "https://play.google.com/store/apps/details?id=nz.tira.app",
+      "https://apps.apple.com/nz/app/tira-sports/id6776856453"
+    ]
+  }
+  </script>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /* ── Hero ─────────────────────────────────────────── */
+    .hero { padding: clamp(48px, 8vw, 96px) 0 clamp(56px, 9vw, 112px); }
+    .hero .wrap {
+      display: grid; gap: clamp(40px, 6vw, 72px);
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); align-items: center;
+    }
+    .hero h1 { color: #fff; font-size: var(--step-5); max-width: 9ch; }
+    .hero .lede { margin-top: 22px; font-size: var(--step-1); line-height: 1.45; color: #d3e6da; max-width: 40ch; }
+    .hero .stores { margin-top: 30px; }
+    .hero .small { margin-top: 18px; font-size: .95rem; color: #b5ccbf; max-width: 46ch; }
 
-    :root {
-      --green:      #1a3a2a;
-      --green-mid:  #245235;
-      --mint:       #52b788;
-      --mint-light: #b7e4c7;
-      --cream:      #f8f4ed;
-      --white:      #ffffff;
-      --text:       #1a1a1a;
-      --muted:      #5a6672;
-      --border:     #e0dbd2;
-      --shadow:     0 4px 24px rgba(26,58,42,.10);
-      --shadow-lg:  0 16px 56px rgba(26,58,42,.16);
+    /* The availability demo: a game card like the one in the app. */
+    .game {
+      background: var(--paper); color: var(--ink);
+      border-radius: var(--radius-l); padding: 22px 22px 20px;
+      box-shadow: 0 30px 60px -30px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.08);
+      max-width: 400px; width: 100%; justify-self: end;
     }
+    .game .when { font-size: .95rem; font-weight: 600; color: var(--slate); }
+    .game .vs { font-size: 2rem; font-stretch: 75%; font-weight: 850; color: var(--turf); line-height: 1.05; margin-top: 2px; }
+    .game .where { font-size: .95rem; color: var(--slate); margin-top: 4px; }
 
-    html { scroll-behavior: smooth; }
+    .count { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); }
+    .count dl { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+    .count dl div { display: flex; flex-direction: column-reverse; }
+    .count dt { font-size: .8rem; color: var(--slate); line-height: 1.2; }
+    .count dd { margin: 0; font-size: 1.9rem; font-stretch: 75%; font-weight: 850; color: var(--turf); line-height: 1; font-variant-numeric: tabular-nums; }
 
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--white);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+    /* One square per player, like bibs laid out on the grass. */
+    .bibs { display: grid; grid-template-columns: repeat(9, 1fr); gap: 5px; margin-top: 14px; }
+    .bib { aspect-ratio: 1; border-radius: 4px; background: var(--line); transition: background-color .25s, box-shadow .25s, transform .25s; }
+    .bib.going { background: var(--mint-ink); }
+    .bib.maybe { background: var(--paper); box-shadow: inset 0 0 0 2px var(--mint-ink); }
+    .bib.cant  { background: #b9c3bd; }
+    .bib.none  { background: var(--paper); box-shadow: inset 0 0 0 2px #b9c3bd; }
+    .bib.you   { box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--amber-ink); }
+    .bib.you.maybe { box-shadow: inset 0 0 0 2px var(--mint-ink), 0 0 0 2px var(--paper), 0 0 0 4px var(--amber-ink); }
+    .bib.you.none  { box-shadow: inset 0 0 0 2px #b9c3bd, 0 0 0 2px var(--paper), 0 0 0 4px var(--amber-ink); }
+    .key { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 10px; font-size: .8rem; color: var(--slate); }
+    .key span { display: inline-flex; align-items: center; gap: 6px; }
+    .key i { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
 
-    /* ── NAV ──────────────────────────────────── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      background: rgba(255,255,255,.96);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      transition: box-shadow .2s;
+    .ask { margin-top: 18px; padding: 16px; background: var(--amber-wash); border-radius: var(--radius-m); }
+    .ask p { font-weight: 700; color: #3d2a00; }
+    .answers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
+    .answers button {
+      min-height: 44px; border-radius: var(--radius-s); border: 2px solid var(--turf);
+      background: var(--paper); color: var(--turf); font-weight: 700; cursor: pointer;
+      transition: background-color .15s, color .15s;
     }
-    nav.scrolled { box-shadow: var(--shadow); }
-    .nav-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 24px;
-      height: 68px;
-      display: flex;
-      align-items: center;
-      gap: 40px;
-    }
-    .nav-logo {
-      font-size: 1.4rem;
-      font-weight: 900;
-      color: var(--green);
-      letter-spacing: 6px;
-      text-decoration: none;
-      flex-shrink: 0;
-    }
-    .nav-logo span { color: var(--mint); }
-    .nav-links {
-      display: flex;
-      list-style: none;
-      gap: 32px;
-      flex: 1;
-    }
-    .nav-links a {
-      font-size: .9rem;
-      font-weight: 500;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color .2s;
-    }
-    .nav-links a:hover { color: var(--green); }
-    .nav-cta {
-      background: var(--green);
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 10px;
-      font-size: .875rem;
-      font-weight: 600;
-      text-decoration: none;
-      white-space: nowrap;
-      transition: background .2s, transform .1s;
-    }
-    .nav-cta:hover { background: var(--green-mid); transform: translateY(-1px); }
-    .hamburger {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-      margin-left: auto;
-      flex-direction: column;
-      gap: 5px;
-    }
-    .hamburger span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--green);
-      transition: .2s;
-    }
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 68px; left: 0; right: 0;
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      padding: 16px 24px 24px;
-      z-index: 99;
-      flex-direction: column;
-      gap: 4px;
-      box-shadow: var(--shadow);
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--text);
-      text-decoration: none;
-      padding: 12px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .mobile-menu a.mob-cta {
-      background: var(--green);
-      color: #fff;
-      padding: 13px 20px;
-      border-radius: 12px;
-      border: none;
-      text-align: center;
-      margin-top: 8px;
-      font-weight: 700;
+    .answers button:hover { background: var(--mint-wash); }
+    .answers button[aria-pressed="true"] { background: var(--turf); color: #fff; }
+    .ask .result { margin-top: 10px; font-size: .92rem; color: #4a3500; min-height: 2.8em; }
+    .try { margin-top: 12px; font-size: .9rem; color: #b5ccbf; text-align: center; max-width: 400px; justify-self: end; width: 100%; }
+    .demo { display: grid; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .js .bib { animation: drop .45s cubic-bezier(.2,.8,.3,1.2) backwards; animation-delay: calc(var(--i) * 35ms + 250ms); }
+      @keyframes drop { from { transform: translateY(-10px) scale(.6); opacity: 0; } }
     }
 
-    /* ── HERO ─────────────────────────────────── */
-    .hero {
-      padding: 136px 24px 100px;
-      background: linear-gradient(160deg, var(--cream) 0%, #dff0e6 55%, var(--white) 100%);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-    }
-    .hero-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--mint-light);
-      color: var(--green);
-      padding: 6px 14px;
-      border-radius: 100px;
-      font-size: .78rem;
-      font-weight: 700;
-      letter-spacing: .3px;
-      margin-bottom: 20px;
-    }
-    .hero-badge-dot { width: 7px; height: 7px; background: var(--mint); border-radius: 50%; }
-    .hero h1 {
-      font-size: clamp(2.8rem, 5vw, 4rem);
-      font-weight: 900;
-      line-height: 1.08;
-      color: var(--green);
-      margin-bottom: 20px;
-      letter-spacing: -1.5px;
-    }
-    .hero h1 em { font-style: normal; color: var(--mint); }
-    .hero-sub {
-      font-size: 1.12rem;
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 36px;
-      max-width: 460px;
-    }
-    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
-    .btn-store {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--green);
-      color: #fff;
-      padding: 13px 22px;
-      border-radius: 14px;
-      text-decoration: none;
-      box-shadow: 0 4px 18px rgba(26,58,42,.28);
-      transition: background .2s, transform .15s, box-shadow .15s;
-    }
-    .btn-store:hover { background: var(--green-mid); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(26,58,42,.32); }
-    .btn-store-label { line-height: 1.15; }
-    .btn-store-small { font-size: .68rem; opacity: .75; display: block; }
-    .btn-store-big   { font-size: .9rem;  font-weight: 700; }
-    .btn-ios { background: #000; color: #fff; box-shadow: 0 4px 18px rgba(0,0,0,.28); }
-    .btn-ios:hover { background: #1a1a1a; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,.32); }
-    .hero-meta {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 28px;
-      flex-wrap: wrap;
-    }
-    .hero-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      background: rgba(26,58,42,.07);
-      color: var(--green);
-      font-size: .78rem;
-      font-weight: 600;
-      padding: 5px 12px;
-      border-radius: 100px;
-      border: 1px solid rgba(26,58,42,.1);
+    @media (max-width: 860px) {
+      .hero .wrap { grid-template-columns: 1fr; }
+      .game, .try { justify-self: start; }
+      .hero h1 { max-width: 11ch; }
     }
 
-    /* ── PHONE MOCKUP ─────────────────────────── */
-    .phone-wrap {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-    }
-    .phone-glow {
-      position: absolute;
-      width: 340px; height: 480px;
-      background: radial-gradient(ellipse, rgba(82,183,136,.22) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .phone-frame {
-      width: 256px;
-      background: var(--green);
-      border-radius: 40px;
-      padding: 12px;
-      box-shadow: 0 32px 80px rgba(26,58,42,.45), 0 0 0 1.5px #2d5a3d;
-      position: relative;
-      transform: perspective(900px) rotateY(-6deg) rotateX(1deg);
-    }
-    .phone-notch {
-      position: absolute;
-      top: 12px; left: 50%;
-      transform: translateX(-50%);
-      width: 88px; height: 26px;
-      background: var(--green);
-      border-radius: 0 0 16px 16px;
-      z-index: 2;
-    }
-    .phone-screen {
-      background: var(--cream);
-      border-radius: 30px;
-      overflow: hidden;
-      min-height: 496px;
-      position: relative;
-    }
-    /* Screen top bar */
-    .ps-topbar {
-      background: var(--green);
-      padding: 32px 16px 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-    }
-    .ps-topbar-title { color: #fff; font-weight: 800; font-size: .95rem; letter-spacing: 3px; }
-    .ps-topbar-sub   { color: var(--mint); font-size: .7rem; font-weight: 600; }
-    /* Screen content */
-    .ps-body { padding: 12px; display: flex; flex-direction: column; gap: 9px; }
-    .ps-section-label { font-size: .65rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; padding: 4px 2px; }
-    .ps-card {
-      background: var(--white);
-      border-radius: 12px;
-      padding: 11px 12px;
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      box-shadow: 0 1px 6px rgba(0,0,0,.06);
-    }
-    .ps-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 3px; }
-    .ps-card-info { flex: 1; }
-    .ps-card-name { font-size: .75rem; font-weight: 700; color: var(--green); margin-bottom: 2px; }
-    .ps-card-time { font-size: .65rem; color: var(--muted); }
-    .ps-pill {
-      font-size: .6rem;
-      font-weight: 700;
-      padding: 3px 8px;
-      border-radius: 6px;
-      flex-shrink: 0;
-      align-self: center;
-    }
-    .ps-pill-yes { background: var(--mint); color: #fff; }
-    .ps-pill-no  { background: var(--border); color: var(--muted); }
-    /* Bottom nav */
-    .ps-bottomnav {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      background: var(--white);
-      border-top: 1px solid var(--border);
-      display: flex;
-      padding: 8px 0 12px;
-    }
-    .ps-tab { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: .5rem; color: var(--muted); }
-    .ps-tab.active { color: var(--mint); }
-    .ps-tab svg { width: 16px; height: 16px; }
+    /* ── Sections ─────────────────────────────────────── */
+    .section { padding: clamp(64px, 9vw, 112px) 0; }
+    .section h2.display { font-size: var(--step-4); max-width: 16ch; }
+    .section .intro { margin-top: 16px; font-size: var(--step-1); line-height: 1.5; color: var(--slate); max-width: 52ch; }
 
-    /* ── TRUST BAR ────────────────────────────── */
-    .trust-bar { background: var(--green); padding: 18px 24px; }
-    .trust-bar-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-    .trust-item { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,.85); font-size: .83rem; font-weight: 500; }
-    .trust-check { color: var(--mint); font-weight: 700; }
+    .basics { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(24px, 4vw, 48px); margin-top: clamp(36px, 5vw, 56px); }
+    .basics > div { border-top: 4px solid var(--turf); padding-top: 18px; }
+    .basics h3 { font-size: var(--step-2); font-stretch: 80%; font-weight: 800; line-height: 1.1; }
+    .basics p { margin-top: 10px; color: var(--ink); }
 
-    /* ── SHARED SECTION ───────────────────────── */
-    .section { padding: 96px 24px; }
-    .section-alt { background: var(--cream); }
-    .section-dark { background: var(--green); }
-    .section-inner { max-width: 1120px; margin: 0 auto; }
-    .section-label {
-      display: inline-block;
-      color: var(--mint);
-      font-size: .72rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .section-dark .section-label { color: var(--mint-light); }
-    .section-heading {
-      font-size: clamp(1.9rem, 3.5vw, 2.7rem);
-      font-weight: 800;
-      color: var(--green);
-      line-height: 1.15;
-      margin-bottom: 14px;
-      letter-spacing: -.5px;
-    }
-    .section-dark .section-heading { color: #fff; }
-    .section-sub { font-size: 1.05rem; color: var(--muted); line-height: 1.7; max-width: 580px; }
-    .section-dark .section-sub { color: rgba(255,255,255,.65); }
-    .section-header { margin-bottom: 64px; }
-    .section-header.centered { text-align: center; }
-    .section-header.centered .section-sub { margin: 0 auto; }
+    .extras { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(32px, 6vw, 80px); align-items: start; margin-top: clamp(64px, 9vw, 112px); }
+    .extras h2 { font-size: var(--step-3); }
+    .extras .also { margin-top: 24px; padding-left: 1.2em; }
+    .extras .also li + li { margin-top: 8px; }
+    .extras .also li::marker { color: var(--mint-ink); }
 
-    /* ── FEATURE ROWS ─────────────────────────── */
-    .feature-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-      margin-bottom: 80px;
-    }
-    .feature-row:last-child { margin-bottom: 0; }
-    .feature-row.rev .feature-visual { order: -1; }
-    .feature-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(82,183,136,.12);
-      color: var(--green);
-      padding: 4px 12px;
-      border-radius: 100px;
-      font-size: .75rem;
-      font-weight: 700;
-      margin-bottom: 14px;
-    }
-    .feature-title {
-      font-size: 1.65rem;
-      font-weight: 800;
-      color: var(--green);
-      margin-bottom: 12px;
-      line-height: 1.2;
-      letter-spacing: -.3px;
-    }
-    .feature-desc { font-size: .97rem; color: var(--muted); line-height: 1.7; margin-bottom: 22px; }
-    .feature-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
-    .feature-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: .88rem;
-      color: var(--muted);
-    }
-    .feature-list li::before {
-      content: '';
-      display: block;
-      width: 18px; height: 18px;
-      background: var(--mint);
-      border-radius: 50%;
-      flex-shrink: 0;
-      margin-top: 1px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-5' stroke='white' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: 11px;
-    }
-    .feature-visual { display: flex; justify-content: center; align-items: center; }
-    .mock-card {
-      background: var(--white);
-      border-radius: 24px;
-      box-shadow: var(--shadow-lg);
-      padding: 26px;
-      width: 100%;
-      max-width: 390px;
-      border: 1px solid var(--border);
-    }
-    .mock-card.dark { background: var(--green); border-color: transparent; }
-    .mock-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
-    .mock-head-title { font-weight: 700; font-size: .9rem; color: var(--green); }
-    .mock-card.dark .mock-head-title { color: #fff; }
-    .mock-chip {
-      background: var(--mint);
-      color: #fff;
-      padding: 3px 10px;
-      border-radius: 100px;
-      font-size: .65rem;
-      font-weight: 700;
-    }
-    /* Event rows in mock */
-    .mock-event {
-      background: var(--cream);
-      border-radius: 12px;
-      padding: 12px 14px;
-      margin-bottom: 9px;
-      display: flex;
-      gap: 11px;
-      align-items: center;
-    }
-    .mock-card.dark .mock-event { background: rgba(255,255,255,.1); }
-    .mock-event:last-child { margin-bottom: 0; }
-    .mock-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
-    .mock-ev-info { flex: 1; }
-    .mock-ev-name { font-size: .78rem; font-weight: 600; color: var(--text); margin-bottom: 2px; }
-    .mock-card.dark .mock-ev-name { color: #fff; }
-    .mock-ev-time { font-size: .68rem; color: var(--muted); }
-    .mock-card.dark .mock-ev-time { color: rgba(255,255,255,.55); }
-    .mock-rsvp-yes { background: var(--mint); color: #fff; font-size: .62rem; font-weight: 700; padding: 3px 8px; border-radius: 6px; flex-shrink: 0; }
-    .mock-rsvp-no  { background: var(--border); color: var(--muted); font-size: .62rem; font-weight: 700; padding: 3px 8px; border-radius: 6px; flex-shrink: 0; }
-    /* Chat bubbles */
-    .mock-msg { display: flex; gap: 9px; align-items: flex-start; margin-bottom: 11px; }
-    .mock-msg.right { flex-direction: row-reverse; }
-    .mock-msg:last-child { margin-bottom: 0; }
-    .mock-av {
-      width: 30px; height: 30px;
-      border-radius: 50%;
-      background: var(--mint-light);
-      color: var(--green);
-      font-size: .65rem;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .mock-bubble {
-      background: rgba(255,255,255,.15);
-      border-radius: 14px;
-      padding: 9px 13px;
-      font-size: .75rem;
-      color: #fff;
-      line-height: 1.4;
-      max-width: 200px;
-    }
-    .mock-msg.right .mock-bubble { background: rgba(255,255,255,.25); }
-    /* AI mock */
-    .mock-input {
-      background: var(--cream);
-      border-radius: 10px;
-      padding: 12px 14px;
-      font-size: .78rem;
-      color: var(--muted);
-      font-style: italic;
-      margin-bottom: 12px;
-    }
-    .mock-result {
-      background: rgba(82,183,136,.1);
-      border-left: 3px solid var(--mint);
-      border-radius: 10px;
-      padding: 12px 14px;
-    }
-    .mock-result-tag { font-size: .65rem; font-weight: 700; color: var(--mint); margin-bottom: 7px; }
-    .mock-result-title { font-size: .82rem; font-weight: 700; color: var(--green); margin-bottom: 4px; }
-    .mock-result-detail { font-size: .72rem; color: var(--muted); line-height: 1.5; }
-    /* Child profile mock */
-    .mock-row {
-      background: var(--cream);
-      border-radius: 10px;
-      padding: 11px 13px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-      font-size: .78rem;
-    }
-    .mock-row:last-child { margin-bottom: 0; }
-    .mock-row.dark-row { background: var(--green); }
-    .mock-row-label { color: var(--muted); }
-    .mock-row.dark-row .mock-row-label { color: rgba(255,255,255,.6); }
-    .mock-row-val { font-weight: 700; color: var(--green); }
-    .mock-row-safe { font-size: .7rem; font-weight: 700; color: var(--mint); }
+    /* An illustration of the app's Team settings screen. */
+    .settings { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-l); overflow: hidden; }
+    .settings .bar { background: var(--turf); color: #fff; padding: 14px 20px; font-weight: 700; font-stretch: 90%; font-size: 1.05rem; }
+    .settings ul { list-style: none; padding: 0; }
+    .settings li { display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; padding: 14px 20px; border-top: 1px solid var(--line); align-items: center; }
+    .settings li:first-child { border-top: 0; }
+    .settings b { font-weight: 700; color: var(--turf); }
+    .settings .tag { margin-left: 8px; font-size: .75rem; font-weight: 650; color: var(--amber-ink); background: var(--amber-wash); padding: 2px 8px; border-radius: 999px; vertical-align: 2px; }
+    .settings span.d { grid-column: 1; font-size: .92rem; color: var(--slate); line-height: 1.45; }
+    .settings .sw { grid-column: 2; grid-row: 1 / span 2; width: 40px; height: 24px; border-radius: 999px; background: var(--mint-ink); position: relative; }
+    .settings .sw::after { content: ''; position: absolute; top: 3px; right: 3px; width: 18px; height: 18px; border-radius: 50%; background: #fff; }
+    .settings .sw.off { background: #c5cec8; }
+    .settings .sw.off::after { right: auto; left: 3px; }
 
-    /* ── ROLES ────────────────────────────────── */
-    .roles-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+    @media (max-width: 860px) {
+      .basics { grid-template-columns: 1fr; }
+      .extras { grid-template-columns: 1fr; }
     }
-    .role-card {
-      background: var(--white);
-      border-radius: 20px;
-      padding: 30px 26px;
-      border: 1px solid var(--border);
-      transition: box-shadow .2s, transform .2s;
-    }
-    .role-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
-    .role-icon {
-      width: 50px; height: 50px;
-      border-radius: 14px;
-      background: rgba(82,183,136,.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      margin-bottom: 16px;
-    }
-    .role-title { font-size: 1.1rem; font-weight: 800; color: var(--green); margin-bottom: 9px; }
-    .role-desc { font-size: .875rem; color: var(--muted); line-height: 1.6; margin-bottom: 18px; }
-    .role-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
-    .role-list li { font-size: .82rem; color: var(--muted); padding-left: 18px; position: relative; }
-    .role-list li::before { content: '✓'; position: absolute; left: 0; color: var(--mint); font-weight: 800; }
 
-    /* ── PRIVACY TRUST ────────────────────────── */
-    .privacy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-    .trust-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .trust-card {
-      background: var(--white);
-      border-radius: 16px;
-      padding: 22px;
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      border: 1px solid var(--border);
-    }
-    .trust-card-icon {
-      width: 42px; height: 42px;
-      border-radius: 12px;
-      background: rgba(82,183,136,.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      flex-shrink: 0;
-    }
-    .trust-card h4 { font-weight: 700; font-size: .88rem; color: var(--green); margin-bottom: 5px; }
-    .trust-card p  { font-size: .8rem; color: var(--muted); line-height: 1.5; }
-    .privacy-links { display: flex; flex-direction: column; gap: 10px; margin-top: 28px; }
-    .privacy-links a { color: var(--green); font-weight: 600; font-size: .9rem; text-decoration: none; }
-    .privacy-links a:hover { color: var(--mint); }
-    .privacy-links a.muted-link { color: var(--muted); font-weight: 500; }
+    /* Roles */
+    .roles { background: var(--paper); border-block: 1px solid var(--line); }
+    .role-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(24px, 4vw, 48px); margin-top: clamp(32px, 5vw, 48px); }
+    .role-cols h3 { font-size: var(--step-1); font-weight: 750; }
+    .role-cols p { margin-top: 8px; color: var(--slate); }
+    .role-cols ul { margin-top: 14px; padding-left: 1.2em; }
+    .role-cols li + li { margin-top: 6px; }
+    .role-cols li::marker { color: var(--mint-ink); }
+    @media (max-width: 860px) { .role-cols { grid-template-columns: 1fr; } }
 
-    /* ── CTA SECTION ──────────────────────────── */
-    .cta-section {
-      background: var(--green);
-      padding: 96px 24px;
-      text-align: center;
-    }
-    .cta-section h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 900;
-      color: #fff;
-      margin-bottom: 14px;
-      letter-spacing: -.5px;
-    }
-    .cta-section p { font-size: 1.05rem; color: rgba(255,255,255,.65); margin-bottom: 40px; max-width: 500px; margin-left: auto; margin-right: auto; }
-    .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .btn-white {
-      background: #fff;
-      color: var(--green);
-      padding: 14px 26px;
-      border-radius: 14px;
-      font-weight: 700;
-      text-decoration: none;
-      font-size: .95rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 4px 18px rgba(0,0,0,.2);
-      transition: transform .15s, box-shadow .15s;
-    }
-    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,.25); }
-    .btn-ghost {
-      background: transparent;
-      color: rgba(255,255,255,.8);
-      padding: 14px 26px;
-      border-radius: 14px;
-      font-weight: 600;
-      text-decoration: none;
-      font-size: .95rem;
-      border: 2px solid rgba(255,255,255,.25);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: border-color .15s, background .15s;
-    }
-    .btn-ghost:hover { border-color: rgba(255,255,255,.6); background: rgba(255,255,255,.05); }
+    /* Children's privacy */
+    .privacy-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 80px); align-items: start; }
+    .privacy-split h2 { font-size: var(--step-4); max-width: 13ch; }
+    .record { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-l); padding: 22px 24px; }
+    .record h3 { font-size: 1.05rem; color: var(--slate); font-weight: 600; }
+    .record dl { margin-top: 12px; }
+    .record dl div { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-top: 1px solid var(--line); }
+    .record dt { color: var(--slate); }
+    .record dd { margin: 0; font-weight: 700; color: var(--turf); text-align: right; }
+    .record dd.never { color: var(--amber-ink); }
+    .privacy-points { margin-top: 24px; padding-left: 1.2em; }
+    .privacy-points li + li { margin-top: 10px; }
+    .privacy-points li::marker { color: var(--mint-ink); }
+    .text-links { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 10px 24px; font-weight: 600; }
+    @media (max-width: 860px) { .privacy-split { grid-template-columns: 1fr; } }
 
-    /* ── FOOTER ───────────────────────────────── */
-    footer {
-      background: #111e17;
-      padding: 60px 24px 36px;
+    /* Getting started: a real sequence, so it is numbered. */
+    .steps { list-style: none; padding: 0; counter-reset: step; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 3vw, 40px); margin-top: clamp(32px, 5vw, 48px); }
+    .steps li { counter-increment: step; }
+    .steps li::before {
+      content: counter(step); display: block; font-size: 3.6rem; font-stretch: 70%; font-weight: 850;
+      line-height: 1; color: var(--mint-ink); margin-bottom: 10px;
     }
-    .footer-inner { max-width: 1120px; margin: 0 auto; }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 48px; }
-    .footer-brand-name { font-size: 1.3rem; font-weight: 900; color: #fff; letter-spacing: 6px; margin-bottom: 10px; }
-    .footer-brand-name span { color: var(--mint); }
-    .footer-tagline { font-size: .875rem; color: rgba(255,255,255,.5); margin-bottom: 8px; }
-    .footer-made    { font-size: .78rem; color: rgba(255,255,255,.28); }
-    .footer-col h4  { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,.35); margin-bottom: 16px; }
-    .footer-col ul  { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-col a   { font-size: .875rem; color: rgba(255,255,255,.6); text-decoration: none; transition: color .2s; }
-    .footer-col a:hover { color: var(--mint); }
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,.08);
-      padding-top: 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .footer-bottom p { font-size: .78rem; color: rgba(255,255,255,.3); }
+    .steps b { display: block; font-size: var(--step-1); color: var(--turf); line-height: 1.3; }
+    .steps span { display: block; margin-top: 6px; color: var(--slate); }
+    @media (max-width: 760px) { .steps { grid-template-columns: 1fr; } }
 
-    /* ── SCROLL ANIMATIONS ────────────────────── */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity .6s ease, transform .6s ease;
+    .clubs-note {
+      margin-top: clamp(40px, 6vw, 64px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+      gap: 16px 32px; padding: 22px 24px; border: 2px solid var(--turf); border-radius: var(--radius-m);
     }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .clubs-note p { max-width: 56ch; }
+    .clubs-note strong { color: var(--turf); }
 
-    /* ── RESPONSIVE ───────────────────────────── */
-    @media (max-width: 900px) {
-      .hero { min-height: auto; padding: 116px 24px 72px; }
-      .hero-inner { grid-template-columns: 1fr; gap: 56px; }
-      .phone-wrap { order: -1; }
-      .feature-row { grid-template-columns: 1fr; gap: 44px; }
-      .feature-row.rev .feature-visual { order: unset; }
-      .roles-grid { grid-template-columns: 1fr; }
-      .privacy-grid { grid-template-columns: 1fr; gap: 48px; }
-      .trust-cards { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
-      .nav-links { display: none; }
-      .nav-cta { display: none; }
-      .hamburger { display: flex; }
-    }
-    @media (max-width: 600px) {
-      .section { padding: 72px 24px; }
-      .hero-btns { flex-direction: column; align-items: flex-start; }
-      .trust-bar-inner { gap: 18px; }
-      .roles-grid { grid-template-columns: 1fr; }
-      .cta-btns { flex-direction: column; align-items: center; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .footer-bottom { flex-direction: column; text-align: center; }
-      .phone-frame { width: 216px; }
-    }
+    /* Closing call to action */
+    .closer { padding: clamp(56px, 8vw, 96px) 0; }
+    .closer .wrap { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 28px 48px; }
+    .closer h2 { color: #fff; font-size: var(--step-4); max-width: 12ch; }
+    .closer p { margin-top: 12px; color: #d3e6da; max-width: 40ch; }
+    .closer p a { color: #fff; }
   </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<!-- NAV -->
-<nav id="nav">
-  <div class="nav-inner">
-    <a href="/" class="nav-logo">TIRA<span>.</span></a>
-    <ul class="nav-links">
-      <li><a href="#features">Features</a></li>
-      <li><a href="#roles">Who it's for</a></li>
-      <li><a href="#privacy">Privacy</a></li>
-      <li><a href="/guide/">Guide</a></li>
-      <li><a href="/support/">Support</a></li>
-    </ul>
-    <a href="#download" class="nav-cta">Get the App</a>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
+<header class="site-header">
+  <div class="wrap">
+    <a class="wordmark" href="/" aria-label="TIRA home">TIRA<i>.</i></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      Menu
     </button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <a href="/#features">Features</a>
+      <a href="/clubs/">For clubs</a>
+      <a href="/guide/">Guide</a>
+      <a href="/support/">Help</a>
+      <a class="btn" href="/get/">Get the app</a>
+    </nav>
   </div>
-</nav>
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#features" onclick="closeMob()">Features</a>
-  <a href="#roles" onclick="closeMob()">Who it's for</a>
-  <a href="#privacy" onclick="closeMob()">Privacy</a>
-  <a href="/guide/" onclick="closeMob()">Guide</a>
-  <a href="/support/" onclick="closeMob()">Support</a>
-  <a href="#download" class="mob-cta" onclick="closeMob()">Get the App</a>
-</div>
+</header>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-inner">
+<main id="main">
+
+<section class="turf on-turf hero" aria-labelledby="hero-title">
+  <div class="chalk-lines" aria-hidden="true">
+    <svg viewBox="0 0 1440 760" preserveAspectRatio="xMaxYMid slice" fill="none" stroke="currentColor" stroke-width="3">
+      <rect x="40" y="40" width="1600" height="680"/>
+      <line x1="1040" y1="40" x2="1040" y2="720"/>
+      <circle cx="1040" cy="380" r="130"/>
+      <circle cx="1040" cy="380" r="5" fill="currentColor"/>
+    </svg>
+  </div>
+  <div class="wrap">
     <div>
-      <div class="hero-badge">
-        <div class="hero-badge-dot"></div>
-        Free for your team and whānau
-      </div>
-      <h1>Your <em>team,</em><br />together</h1>
-      <p class="hero-sub">
-        TIRA keeps coaches, parents, and players connected: schedules, RSVPs,
-        team messages, and more. Built in Aotearoa, free forever.
-      </p>
-      <div class="hero-btns" id="download">
-        <a href="https://play.google.com/store/apps/details?id=nz.tira.app" class="btn-store">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M3.18 1.77C2.46 2.14 2 2.9 2 3.78v16.44c0 .88.46 1.64 1.18 2.01l9.21-9.21v-.22L3.18 3.72v-1.95z" fill="#52b788"/>
-            <path d="M15.46 15.54l-3.07-3.07v-.22l3.07-3.07 3.71 2.11c1.04.59 1.04 1.55 0 2.14l-3.71 2.11z" fill="#f9c74f"/>
-            <path d="M15.53 15.5L12.39 12.35 3.18 21.23c.34.18.75.16 1.12-.06l11.23-5.67z" fill="#ea4335"/>
-            <path d="M15.53 8.5L4.3 2.83C3.93 2.61 3.52 2.59 3.18 2.77l9.21 9.58 3.14-3.85z" fill="#4285f4"/>
-          </svg>
-          <div class="btn-store-label">
-            <span class="btn-store-small">Get it on</span>
-            <span class="btn-store-big">Google Play</span>
-          </div>
+      <h1 id="hero-title" class="display">Who's coming on Saturday?</h1>
+      <p class="lede">TIRA answers that for you. One schedule for the team, a one-tap answer from every player and parent, and reminders that go out on their own.</p>
+      <div class="stores" id="download">
+        <a class="store" href="https://apps.apple.com/nz/app/tira-sports/id6776856453">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <span><small>Download on the</small><strong>App Store</strong></span>
         </a>
-        <a href="https://apps.apple.com/nz/app/tira-sports/id6776856453" class="btn-store btn-ios" aria-label="Download TIRA on the iOS App Store">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-          </svg>
-          <div class="btn-store-label">
-            <span class="btn-store-small">Download on the</span>
-            <span class="btn-store-big">App Store</span>
-          </div>
+        <a class="store" href="https://play.google.com/store/apps/details?id=nz.tira.app">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.18 1.77C2.46 2.14 2 2.9 2 3.78v16.44c0 .88.46 1.64 1.18 2.01l9.21-9.21v-.22L3.18 3.72v-1.95z" fill="#52b788"/><path d="M15.46 15.54l-3.07-3.07v-.22l3.07-3.07 3.71 2.11c1.04.59 1.04 1.55 0 2.14l-3.71 2.11z" fill="#f9c74f"/><path d="M15.53 15.5L12.39 12.35 3.18 21.23c.34.18.75.16 1.12-.06l11.23-5.67z" fill="#ea4335"/><path d="M15.53 8.5L4.3 2.83C3.93 2.61 3.52 2.59 3.18 2.77l9.21 9.58 3.14-3.85z" fill="#4285f4"/></svg>
+          <span><small>Get it on</small><strong>Google Play</strong></span>
         </a>
       </div>
-      <div class="hero-meta">
-        <span class="hero-chip">🌿 Made in Aotearoa</span>
-        <span class="hero-chip">Free, always</span>
-        <span class="hero-chip">No credit card</span>
-      </div>
+      <p class="small">Free for teams, players and families. No ads, no passwords, and we never sell your data. Made in Aotearoa.</p>
     </div>
 
-    <!-- Phone mockup -->
-    <div class="phone-wrap">
-      <div class="phone-glow"></div>
-      <div class="phone-frame">
-        <div class="phone-notch"></div>
-        <div class="phone-screen">
-          <div class="ps-topbar">
-            <div>
-              <div class="ps-topbar-title">TIRA</div>
-              <div class="ps-topbar-sub">Schedule</div>
-            </div>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="2" stroke-linecap="round">
-              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>
-            </svg>
-          </div>
-          <div class="ps-body">
-            <div class="ps-section-label">This week</div>
-            <div class="ps-card">
-              <div class="ps-dot" style="background:#4CAF50"></div>
-              <div class="ps-card-info">
-                <div class="ps-card-name">Rugby Training</div>
-                <div class="ps-card-time">Wed 4:30pm · Truby King Park</div>
-              </div>
-              <span class="ps-pill ps-pill-yes">Going</span>
-            </div>
-            <div class="ps-card">
-              <div class="ps-dot" style="background:#FF9800"></div>
-              <div class="ps-card-info">
-                <div class="ps-card-name">Game vs Rongotai</div>
-                <div class="ps-card-time">Sat 10:00am · Away · 11 going</div>
-              </div>
-              <span class="ps-pill ps-pill-no">RSVP?</span>
-            </div>
-            <div class="ps-card">
-              <div class="ps-dot" style="background:#52b788"></div>
-              <div class="ps-card-info">
-                <div class="ps-card-name">End of Season Prizegiving</div>
-                <div class="ps-card-time">Sun 2:00pm · Club Rooms</div>
-              </div>
-              <span class="ps-pill ps-pill-yes">Going</span>
-            </div>
-            <div class="ps-section-label" style="margin-top:4px">Next week</div>
-            <div class="ps-card">
-              <div class="ps-dot" style="background:#52b788"></div>
-              <div class="ps-card-info">
-                <div class="ps-card-name">Training · Skills Session</div>
-                <div class="ps-card-time">Wed 4:30pm · Truby King Park</div>
-              </div>
-              <span class="ps-pill ps-pill-no">RSVP?</span>
-            </div>
-          </div>
-          <!-- Bottom nav -->
-          <div class="ps-bottomnav">
-            <div class="ps-tab active">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              Schedule
-            </div>
-            <div class="ps-tab">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-              Team
-            </div>
-            <div class="ps-tab">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-              Messages
-            </div>
-            <div class="ps-tab">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-              Profile
-            </div>
+    <div class="demo">
+      <article class="game" aria-labelledby="game-title">
+        <p class="when">Saturday, 9:30am</p>
+        <h2 id="game-title" class="vs">Game vs Eastern FC</h2>
+        <p class="where">Ngataringa Park, home</p>
+
+        <div class="count">
+          <dl aria-live="polite" id="tally">
+            <div><dt>Going</dt><dd data-k="going">11</dd></div>
+            <div><dt>Maybe</dt><dd data-k="maybe">2</dd></div>
+            <div><dt>Can't</dt><dd data-k="cant">3</dd></div>
+            <div><dt>No answer</dt><dd data-k="none">2</dd></div>
+          </dl>
+          <div class="bibs" id="bibs" aria-hidden="true"></div>
+          <div class="key" aria-hidden="true">
+            <span><i style="background:var(--mint-ink)"></i>Going</span>
+            <span><i style="box-shadow:inset 0 0 0 2px var(--mint-ink)"></i>Maybe</span>
+            <span><i style="background:#b9c3bd"></i>Can't</span>
+            <span><i style="box-shadow:inset 0 0 0 2px #b9c3bd"></i>No answer</span>
           </div>
         </div>
-      </div>
+
+        <div class="ask" id="ask" hidden>
+          <p id="ask-q">Is Mia coming?</p>
+          <div class="answers" role="group" aria-labelledby="ask-q">
+            <button type="button" data-a="going" aria-pressed="false">Going</button>
+            <button type="button" data-a="maybe" aria-pressed="false">Maybe</button>
+            <button type="button" data-a="cant" aria-pressed="false">Can't</button>
+          </div>
+          <p class="result" id="result" aria-live="polite">No answer yet, so TIRA will remind you 3 days, 1 day and 2 hours before.</p>
+        </div>
+      </article>
+      <p class="try" id="try" hidden>Try it. This is how a parent answers for their child in the app.</p>
     </div>
   </div>
 </section>
 
-<!-- TRUST BAR -->
-<div class="trust-bar">
-  <div class="trust-bar-inner">
-    <div class="trust-item"><span class="trust-check">✓</span> Free for coaches</div>
-    <div class="trust-item"><span class="trust-check">✓</span> No passwords, ever</div>
-    <div class="trust-item"><span class="trust-check">✓</span> Children's data protected</div>
-    <div class="trust-item"><span class="trust-check">✓</span> Android &amp; iOS</div>
-  </div>
-</div>
+<section class="section" id="features" aria-labelledby="features-title">
+  <div class="wrap">
+    <h2 id="features-title" class="display">Everything your team needs each week</h2>
+    <p class="intro">Built for volunteer coaches and busy whānau, not tech experts. Every team gets these three from the start.</p>
 
-<!-- FEATURES -->
-<section class="section" id="features">
-  <div class="section-inner">
-    <div class="section-header">
-      <span class="section-label">Features</span>
-      <h2 class="section-heading">Everything your team needs,<br />nothing it doesn't</h2>
-      <p class="section-sub">TIRA brings your whole team into one simple app, built for busy coaches and whānau, not tech experts.</p>
-    </div>
-
-    <!-- Schedule & RSVP -->
-    <div class="feature-row fade-up">
-      <div class="feature-text">
-        <div class="feature-pill">📅 Schedule</div>
-        <h3 class="feature-title">Plan events, know who's coming</h3>
-        <p class="feature-desc">Create practices, games, and team events in seconds. Players and parents RSVP with one tap, so you always know the headcount before you head to the field.</p>
-        <ul class="feature-list">
-          <li>AI-assisted event creation: just describe it in plain English</li>
-          <li>Instant RSVP tracking with live headcount</li>
-          <li>Push reminders so nobody forgets</li>
-          <li>Transport coordination: who needs a ride?</li>
-        </ul>
-      </div>
-      <div class="feature-visual">
-        <div class="mock-card">
-          <div class="mock-head">
-            <span class="mock-head-title">This week</span>
-            <span class="mock-chip">3 events</span>
-          </div>
-          <div class="mock-event">
-            <div class="mock-dot" style="background:#4CAF50"></div>
-            <div class="mock-ev-info">
-              <div class="mock-ev-name">Training · Truby King Park</div>
-              <div class="mock-ev-time">Wednesday 4:30pm · 14 going</div>
-            </div>
-            <span class="mock-rsvp-yes">Going ✓</span>
-          </div>
-          <div class="mock-event">
-            <div class="mock-dot" style="background:#FF9800"></div>
-            <div class="mock-ev-info">
-              <div class="mock-ev-name">Game vs Rongotai · Away</div>
-              <div class="mock-ev-time">Saturday 10:00am · 11 going</div>
-            </div>
-            <span class="mock-rsvp-no">RSVP?</span>
-          </div>
-          <div class="mock-event">
-            <div class="mock-dot" style="background:#52b788"></div>
-            <div class="mock-ev-info">
-              <div class="mock-ev-name">End of Season Prizegiving</div>
-              <div class="mock-ev-time">Sunday 2:00pm · 20 going</div>
-            </div>
-            <span class="mock-rsvp-yes">Going ✓</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Messaging -->
-    <div class="feature-row rev fade-up">
-      <div class="feature-text">
-        <div class="feature-pill">💬 Messages</div>
-        <h3 class="feature-title">Keep everyone in the loop</h3>
-        <p class="feature-desc">Replace the group-chat chaos with a proper team space. Coaches send announcements to the whole team, or message parents and players directly.</p>
-        <ul class="feature-list">
-          <li>Team announcements from coaches to everyone</li>
-          <li>Direct messages between parents and coaches</li>
-          <li>AI-drafted messages: just say what you want to send</li>
-          <li>Push notifications so urgent messages get seen</li>
-        </ul>
-      </div>
-      <div class="feature-visual">
-        <div class="mock-card dark">
-          <div class="mock-head">
-            <span class="mock-head-title">Team Chat</span>
-            <span class="mock-chip">Live</span>
-          </div>
-          <div class="mock-msg">
-            <div class="mock-av">SK</div>
-            <div class="mock-bubble">Training cancelled tonight, field is waterlogged. Back on Wednesday!</div>
-          </div>
-          <div class="mock-msg right">
-            <div class="mock-av" style="background:rgba(255,255,255,.15);color:#fff">Me</div>
-            <div class="mock-bubble">Thanks coach, see you Wed 👍</div>
-          </div>
-          <div class="mock-msg">
-            <div class="mock-av">JT</div>
-            <div class="mock-bubble">Ka pai! Looking forward to it.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- AI -->
-    <div class="feature-row fade-up">
-      <div class="feature-text">
-        <div class="feature-pill">🤖 AI-powered</div>
-        <h3 class="feature-title">Create events in plain English</h3>
-        <p class="feature-desc">Just type "rugby practice Wednesday 4pm at Truby King Park" and TIRA fills in the rest automatically. Less time on admin, more time coaching.</p>
-        <ul class="feature-list">
-          <li>Natural language event creation</li>
-          <li>Attendance summaries at a glance</li>
-          <li>Session plan drafts for coaches</li>
-          <li>Message drafting: say what you mean</li>
-        </ul>
-      </div>
-      <div class="feature-visual">
-        <div class="mock-card">
-          <div class="mock-head">
-            <span class="mock-head-title">Create with AI</span>
-          </div>
-          <div class="mock-input">"rugby practice Wednesday 4:30pm at Truby King Park, bring pinnies"</div>
-          <div class="mock-result">
-            <div class="mock-result-tag">✓ EVENT CREATED</div>
-            <div class="mock-result-title">Rugby Practice</div>
-            <div class="mock-result-detail">
-              📅 Wednesday · 4:30 pm<br />
-              📍 Truby King Park<br />
-              📝 Bring pinnies<br />
-              🔔 Reminder sent to 18 players
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Children's safety -->
-    <div class="feature-row rev fade-up">
-      <div class="feature-text">
-        <div class="feature-pill">🛡️ Family-safe</div>
-        <h3 class="feature-title">Built for families, safe by design</h3>
-        <p class="feature-desc">Parents register children, and we only store a first name. Emergency contacts and medical notes are encrypted and access-logged so coaches can keep tamariki safe without compromising their privacy.</p>
-        <ul class="feature-list">
-          <li>Children's last names never stored</li>
-          <li>Medical notes encrypted at rest</li>
-          <li>Every coach access to medical info is logged</li>
-          <li>Parents can view, edit, or delete at any time</li>
-
-        </ul>
-      </div>
-      <div class="feature-visual">
-        <div class="mock-card">
-          <div class="mock-head">
-            <span class="mock-head-title">Child Profile</span>
-            <span class="mock-chip" style="background:#f59e0b">Private</span>
-          </div>
-          <div class="mock-row">
-            <span class="mock-row-label">First name only</span>
-            <span class="mock-row-val">Wiremu</span>
-          </div>
-          <div class="mock-row">
-            <span class="mock-row-label">Last name</span>
-            <span class="mock-row-safe">Never stored ✓</span>
-          </div>
-          <div class="mock-row dark-row">
-            <span class="mock-row-label">Medical notes</span>
-            <span class="mock-row-safe">🔒 Encrypted</span>
-          </div>
-          <div class="mock-row">
-            <span class="mock-row-label">Emergency contact</span>
-            <span class="mock-row-val" style="font-size:.7rem">Parent · 021 xxx xxxx</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHO IT'S FOR -->
-<section class="section section-alt" id="roles">
-  <div class="section-inner">
-    <div class="section-header centered">
-      <span class="section-label">Who it's for</span>
-      <h2 class="section-heading">Built for every member of your team</h2>
-      <p class="section-sub">Whether you're the coach juggling 20 players, a parent managing multiple kids' sports, or a player who just needs to know when to show up. TIRA has you covered.</p>
-    </div>
-    <div class="roles-grid">
-      <div class="role-card fade-up">
-        <div class="role-icon">🏆</div>
-        <div class="role-title">Coaches &amp; Managers</div>
-        <p class="role-desc">Spend less time on admin and more time coaching. Create events, track attendance, and keep your whole team informed with a few taps.</p>
-        <ul class="role-list">
-          <li>Create and manage all team events</li>
-          <li>See RSVP counts at a glance</li>
-          <li>Send announcements to everyone</li>
-          <li>Access emergency info safely</li>
-          <li>Generate session plans with AI</li>
-        </ul>
-      </div>
-      <div class="role-card fade-up" style="transition-delay:.1s">
-        <div class="role-icon">👨‍👩‍👧</div>
-        <div class="role-title">Parents &amp; Whānau</div>
-        <p class="role-desc">Stay on top of your child's schedule, RSVP to events, and message the coach, all from one place. No more chasing WhatsApp threads.</p>
-        <ul class="role-list">
-          <li>RSVP to events with one tap</li>
-          <li>Get push reminders before events</li>
-          <li>Manage your child's profile safely</li>
-          <li>Chat directly with coaches</li>
-          <li>Sort transport to events</li>
-        </ul>
-      </div>
-      <div class="role-card fade-up" style="transition-delay:.2s">
-        <div class="role-icon">⚡</div>
-        <div class="role-title">Players</div>
-        <p class="role-desc">See when and where you need to be. RSVP, read team announcements, and check event details, sorted in seconds.</p>
-        <ul class="role-list">
-          <li>View your team's full schedule</li>
-          <li>RSVP quickly to events</li>
-          <li>Get notified about changes</li>
-          <li>See who else is coming</li>
-          <li>Read team updates and news</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRIVACY -->
-<section class="section" id="privacy">
-  <div class="section-inner">
-    <div class="privacy-grid">
-      <div class="fade-up">
-        <span class="section-label">Privacy-first</span>
-        <h2 class="section-heading">Your data stays yours</h2>
-        <p class="section-sub">TIRA is built for NZ community sports, not for harvesting data. We collect only what's needed to run your team, store it securely, and give you full control to delete it any time.</p>
-        <div class="privacy-links">
-          <a href="/privacy/">Read our full Privacy Policy →</a>
-          <a href="/delete-account/" class="muted-link">How to delete your account →</a>
-          <a href="/support/" class="muted-link">Get support →</a>
-        </div>
-      </div>
-      <div class="trust-cards fade-up" style="transition-delay:.1s">
-        <div class="trust-card">
-          <div class="trust-card-icon">🔒</div>
-          <div>
-            <h4>Encrypted at rest</h4>
-            <p>Medical notes are encrypted using Supabase Vault, never readable in plain text.</p>
-          </div>
-        </div>
-        <div class="trust-card">
-          <div class="trust-card-icon">✋</div>
-          <div>
-            <h4>You're in control</h4>
-            <p>Access, correct, or delete your data any time, no hoops, no waiting, no questions asked.</p>
-          </div>
-        </div>
-        <div class="trust-card">
-          <div class="trust-card-icon">👶</div>
-          <div>
-            <h4>Children's data minimised</h4>
-            <p>We only store a child's first name. Last names are never collected or stored.</p>
-          </div>
-        </div>
-        <div class="trust-card">
-          <div class="trust-card-icon">🚫</div>
-          <div>
-            <h4>Zero ads, zero selling</h4>
-            <p>We don't sell your data, run ads, or share your info with anyone for marketing.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-section">
-  <h2>Get your team on TIRA</h2>
-  <p>Free for coaches, parents, and players. Set up your team in minutes, no tech expertise needed. Kia ora!</p>
-  <div class="cta-btns">
-    <a href="https://play.google.com/store/apps/details?id=nz.tira.app" class="btn-white">Get on Google Play</a>
-    <a href="https://apps.apple.com/nz/app/tira-sports/id6776856453" class="btn-white">Download on the App Store</a>
-    <a href="/support/" class="btn-ghost">Need help?</a>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-grid">
+    <div class="basics">
       <div>
-        <div class="footer-brand-name">TIRA<span>.</span></div>
-        <div class="footer-tagline">Your team, together</div>
-        <div class="footer-made">Made with love in Aotearoa New Zealand</div>
+        <h3>The schedule</h3>
+        <p>Trainings, games and events with the venue, notes and a map link. Paste a whole season's fixture list in one go, or repeat a training every week or fortnight.</p>
       </div>
-      <div class="footer-col">
-        <h4>App</h4>
-        <ul>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#roles">Who it's for</a></li>
-          <li><a href="#download">Download</a></li>
-          <li><a href="/guide/">Quick Start Guide</a></li>
-          <li><a href="/support/">Support</a></li>
+      <div>
+        <h3>Who's coming</h3>
+        <p>Players and parents answer Going, Maybe or Can't with one tap. TIRA reminds anyone who hasn't answered, so the coach doesn't have to chase.</p>
+      </div>
+      <div>
+        <h3>Updates and chat</h3>
+        <p>Announcements that don't get buried, plus a team chat with replies, mentions, reactions and quick polls.</p>
+      </div>
+    </div>
+
+    <div class="extras">
+      <div>
+        <h2 class="display">Switch on what suits your team</h2>
+        <p class="intro">Each coach picks the extras their team uses in Team settings. Nothing to buy and nothing to unlock.</p>
+        <ul class="also">
+          <li>Works at a ground with no signal: TIRA shows what it saved the last time it was online.</li>
+          <li>Add an event by describing it, like "training Wednesday 4:30 at Truby King Park".</li>
+          <li>Also suits groups that don't play games, like rides, walks and working bees.</li>
         </ul>
       </div>
-      <div class="footer-col">
-        <h4>Legal</h4>
+      <figure class="settings" aria-label="Illustration of the Team settings screen in the app">
+        <div class="bar" aria-hidden="true">Team settings</div>
+        <ul>
+          <li><b>Share availability</b><span class="sw" aria-hidden="true"></span><span class="d">Players, or parents on a kids' team, see who's coming. First names only.</span></li>
+          <li><b>Close availability</b><span class="sw off" aria-hidden="true"></span><span class="d">Close a game's answers early to find fill-ins in time.</span></li>
+          <li><b>Volunteer roles</b><span class="sw" aria-hidden="true"></span><span class="d">Scorer, referee, oranges, snacks: families sign up on each game.</span></li>
+          <li><b>Coordinate rides</b><span class="sw" aria-hidden="true"></span><span class="d">Families offer seats or ask for a lift, by area.</span></li>
+          <li><b>Record results</b><span class="sw" aria-hidden="true"></span><span class="d">Scores, an MVP for each game, and a season record.</span></li>
+          <li><b>Game day lineup <span class="tag">Cricket</span></b><span class="sw off" aria-hidden="true"></span><span class="d">Publish the batting order, captain, keeper and opening bowlers.</span></li>
+          <li><b>Fixtures from PlayHQ <span class="tag">Clubs</span></b><span class="sw off" aria-hidden="true"></span><span class="d">Games arrive in TIRA by themselves and stay up to date.</span></li>
+        </ul>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section roles" aria-labelledby="roles-title">
+  <div class="wrap">
+    <h2 id="roles-title" class="display">One app, whatever your part in the team</h2>
+    <div class="role-cols">
+      <div>
+        <h3>Coaches and managers</h3>
+        <p>Less admin, more coaching.</p>
+        <ul>
+          <li>See the headcount before you leave home</li>
+          <li>Send an update the whole team actually sees</li>
+          <li>Reach emergency details, when a parent allows it</li>
+          <li>Record results and the season's record</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Parents and whānau</h3>
+        <p>Every child's schedule in one place.</p>
+        <ul>
+          <li>Answer for each child with one tap</li>
+          <li>Get a reminder before every event</li>
+          <li>Sort rides and volunteer jobs on the game</li>
+          <li>Control what coaches can see about your child</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Players</h3>
+        <p>Know when and where to turn up.</p>
+        <ul>
+          <li>See the team's full schedule</li>
+          <li>Say if you're coming in seconds</li>
+          <li>Hear about changes straight away</li>
+          <li>Follow the season's results</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="privacy" aria-labelledby="privacy-title">
+  <div class="wrap privacy-split">
+    <div>
+      <h2 id="privacy-title" class="display">Children's details stay with their parents</h2>
+      <ul class="privacy-points">
+        <li>Coaches see a child's emergency contact and medical notes only if a parent turns it on, and every look is logged.</li>
+        <li>Medical notes are encrypted.</li>
+        <li>Parents can see, change or delete their child's details at any time in the app's Privacy dashboard.</li>
+        <li>No ads, and we never sell anyone's data.</li>
+      </ul>
+      <p class="text-links">
+        <a href="/privacy/">Read the Privacy Policy</a>
+        <a href="/delete-account/">How to delete your account</a>
+      </p>
+    </div>
+    <div class="record">
+      <h3>What TIRA keeps about a child</h3>
+      <dl>
+        <div><dt>First name</dt><dd>Kept</dd></div>
+        <div><dt>Date of birth</dt><dd>Kept</dd></div>
+        <div><dt>Emergency contact and medical notes</dt><dd>Locked until a parent allows it</dd></div>
+        <div><dt>Surname</dt><dd class="never">Never asked for</dd></div>
+        <div><dt>Photo</dt><dd class="never">Never asked for</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="section roles" aria-labelledby="start-title">
+  <div class="wrap">
+    <h2 id="start-title" class="display">Set up your team in about ten minutes</h2>
+    <ol class="steps">
+      <li><b>The coach downloads TIRA and creates the team.</b><span>Sign in with a code sent by email or text. There's no password to remember.</span></li>
+      <li><b>They share the team's join code.</b><span>Send it to players and parents in a text, an email or the old group chat.</span></li>
+      <li><b>Families join with the code.</b><span>Parents register their child with a first name and date of birth, and that's it.</span></li>
+    </ol>
+    <p style="margin-top:28px"><a href="/guide/">Read the step-by-step quick start guide</a></p>
+
+    <div class="clubs-note">
+      <p><strong>Running a club?</strong> Get the two-page quick start guide to share with your teams, and ask us about fixtures from PlayHQ or a set-up session for your coaches.</p>
+      <a class="btn btn-outline" href="/clubs/">TIRA for clubs</a>
+    </div>
+  </div>
+</section>
+
+<section class="turf on-turf closer" aria-labelledby="closer-title">
+  <div class="wrap">
+    <div>
+      <h2 id="closer-title" class="display">Get your team on TIRA</h2>
+      <p>Free for coaches, players and families. Questions first? <a href="/support/">Visit help and support</a>.</p>
+    </div>
+    <div class="stores">
+      <a class="store" href="https://apps.apple.com/nz/app/tira-sports/id6776856453">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <span><small>Download on the</small><strong>App Store</strong></span>
+      </a>
+      <a class="store" href="https://play.google.com/store/apps/details?id=nz.tira.app">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.18 1.77C2.46 2.14 2 2.9 2 3.78v16.44c0 .88.46 1.64 1.18 2.01l9.21-9.21v-.22L3.18 3.72v-1.95z" fill="#52b788"/><path d="M15.46 15.54l-3.07-3.07v-.22l3.07-3.07 3.71 2.11c1.04.59 1.04 1.55 0 2.14l-3.71 2.11z" fill="#f9c74f"/><path d="M15.53 15.5L12.39 12.35 3.18 21.23c.34.18.75.16 1.12-.06l11.23-5.67z" fill="#ea4335"/><path d="M15.53 8.5L4.3 2.83C3.93 2.61 3.52 2.59 3.18 2.77l9.21 9.58 3.14-3.85z" fill="#4285f4"/></svg>
+        <span><small>Get it on</small><strong>Google Play</strong></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div class="about">
+        <a class="wordmark" href="/" aria-label="TIRA home">TIRA<i>.</i></a>
+        <p>The free team app for community sport. Made in Aotearoa New Zealand.</p>
+      </div>
+      <div>
+        <h2>The app</h2>
+        <ul>
+          <li><a href="/get/">Get the app</a></li>
+          <li><a href="/guide/">Quick start guide</a></li>
+          <li><a href="/support/">Help and support</a></li>
+          <li><a href="/status/">Is TIRA working?</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Clubs and sponsors</h2>
+        <ul>
+          <li><a href="/clubs/">TIRA for clubs</a></li>
+          <li><a href="/partners/">Become a partner</a></li>
+          <li><a href="/support-tira/">Help keep TIRA free</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Your data</h2>
         <ul>
           <li><a href="/privacy/">Privacy Policy</a></li>
           <li><a href="/terms/">Terms of Use</a></li>
-          <li><a href="/delete-account/">Delete Account</a></li>
-          <li><a href="mailto:privacy@tiraapp.nz">privacy@tiraapp.nz</a></li>
-          <li><a href="mailto:support@tiraapp.nz">support@tiraapp.nz</a></li>
+          <li><a href="/delete-account/">Delete your account</a></li>
         </ul>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 TIRA &mdash; Operated by Aurodox Ltd</p>
+    <div class="legal">
+      <p>&copy; 2026 TIRA. Operated by Aurodox Ltd.</p>
+      <p><a href="mailto:support@tiraapp.nz">support@tiraapp.nz</a></p>
     </div>
   </div>
 </footer>
 
+<script src="/assets/site.js" defer></script>
 <script>
-  // Sticky nav shadow
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+  // The hero demo. Without JavaScript the card still shows the tally; the
+  // buttons only appear when they work.
+  (function () {
+    document.documentElement.classList.add('js');
+    var tally = { going: 11, maybe: 2, cant: 3, none: 2 };
+    var order = ['going', 'maybe', 'cant', 'none'];
+    var bibs = document.getElementById('bibs');
+    var mine = 'none';
+    var RESULT = {
+      none: "No answer yet, so TIRA will remind you 3 days, 1 day and 2 hours before.",
+      going: "Mia's going. The coach sees it straight away, and TIRA won't send you any more “Are you coming?” reminders.",
+      maybe: "Mia's a maybe. You can change it any time before the game.",
+      cant: "Mia can't make it. The coach knows in time to find a fill-in."
+    };
 
-  // Mobile hamburger
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
-  function closeMob() { mobileMenu.classList.remove('open'); }
+    function draw() {
+      var html = '', i = 0;
+      // Everyone else, grouped by answer, then Mia last.
+      var rest = { going: tally.going, maybe: tally.maybe, cant: tally.cant, none: tally.none };
+      rest[mine] -= 1;
+      order.forEach(function (k) {
+        for (var n = 0; n < rest[k]; n++) html += '<span class="bib ' + k + '" style="--i:' + (i++) + '"></span>';
+      });
+      html += '<span class="bib you ' + mine + '" style="--i:' + i + '"></span>';
+      bibs.innerHTML = html;
+      order.forEach(function (k) { document.querySelector('[data-k="' + k + '"]').textContent = tally[k]; });
+    }
+    draw();
 
-  // Scroll fade-in
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    var ask = document.getElementById('ask');
+    ask.hidden = false;
+    document.getElementById('try').hidden = false;
+    var result = document.getElementById('result');
+    var btns = ask.querySelectorAll('button');
+    btns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var a = b.getAttribute('data-a');
+        if (a === mine) a = 'none'; // tap again to clear
+        tally[mine] -= 1; tally[a] += 1; mine = a;
+        btns.forEach(function (x) { x.setAttribute('aria-pressed', String(x.getAttribute('data-a') === mine)); });
+        result.textContent = RESULT[mine];
+        // Only animate the first time; later changes just recolour.
+        bibs.querySelectorAll('.bib').forEach(function (el) { el.style.animation = 'none'; });
+        var you = bibs.querySelector('.you');
+        you.className = 'bib you ' + mine;
+        // Re-colour the rest in case counts shifted.
+        var rest = { going: tally.going, maybe: tally.maybe, cant: tally.cant, none: tally.none };
+        rest[mine] -= 1;
+        var all = bibs.querySelectorAll('.bib:not(.you)'), j = 0;
+        order.forEach(function (k) { for (var n = 0; n < rest[k]; n++) all[j++].className = 'bib ' + k; });
+        order.forEach(function (k) { document.querySelector('[data-k="' + k + '"]').textContent = tally[k]; });
+      });
+    });
+  })();
 </script>
 </body>
 </html>

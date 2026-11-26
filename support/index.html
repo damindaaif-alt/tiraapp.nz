@@ -1,318 +1,260 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-NZ">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Support | TIRA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Help and support | TIRA</title>
+  <meta name="description" content="Answers to common questions about TIRA, how to report a problem, and how to contact the TIRA team." />
+  <link rel="canonical" href="https://tiraapp.nz/support/" />
+  <meta name="theme-color" content="#1a3a2a" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="TIRA" />
+  <meta property="og:title" content="Help and support | TIRA" />
+  <meta property="og:description" content="Answers to common questions about TIRA, how to report a problem, and how to contact the TIRA team." />
+  <meta property="og:url" content="https://tiraapp.nz/support/" />
+  <meta property="og:image" content="https://tiraapp.nz/android-chrome-512x512.png" />
+  <meta name="twitter:card" content="summary" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
+  <link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/site.css">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #f8f4ed;
-      color: #1a1a1a;
-      line-height: 1.7;
+    .quick { margin-top: 0; }
+    .h3 { font-size: var(--step-1) !important; font-stretch: 100% !important; font-weight: 700 !important; border: 0 !important; padding: 0 !important; margin: 0 !important; }
+    .faq-search { margin-top: .8em; }
+    .faq-search label { display: block; font-weight: 650; color: var(--turf); margin-bottom: 6px; }
+    .faq-search input {
+      width: 100%; min-height: 48px; padding: 10px 14px; font: inherit; color: var(--ink);
+      background: var(--paper); border: 2px solid var(--line); border-radius: var(--radius-s);
     }
-
-    header {
-      background: #1a3a2a;
-      padding: 28px 24px;
-      text-align: center;
-    }
-    header h1 {
-      font-size: 2rem;
-      font-weight: 900;
-      color: #fff;
-      letter-spacing: 8px;
-    }
-    header p {
-      color: #52b788;
-      margin-top: 4px;
-      font-size: 0.9rem;
-      letter-spacing: 1px;
-    }
-
-    main {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 40px 24px 80px;
-    }
-
-    h2 {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: #1a3a2a;
-      margin-top: 36px;
-      margin-bottom: 10px;
-      padding-bottom: 6px;
-      border-bottom: 2px solid #52b788;
-    }
-
-    p { margin-bottom: 14px; }
-
-    ul {
-      margin: 10px 0 14px 20px;
-    }
-    ul li { margin-bottom: 6px; }
-
-    .highlight {
-      background: #1a3a2a;
-      color: #fff;
-      border-radius: 12px;
-      padding: 20px 24px;
-      margin: 32px 0;
-    }
-    .highlight p { margin: 0; color: #f8f4ed; }
-    .highlight strong { color: #52b788; }
-
-    .card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 24px;
-      margin: 20px 0;
-      border: 1px solid #e0dbd2;
-    }
-    .card h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      color: #1a3a2a;
-      margin-bottom: 8px;
-    }
-
-    a { color: #1a3a2a; font-weight: 600; }
-
-    nav {
-      background: #1a3a2a;
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      height: 60px;
-      gap: 24px;
-    }
-    nav a.nav-home { font-size: 1.1rem; font-weight: 900; color: #fff; letter-spacing: 5px; text-decoration: none; }
-    nav a.nav-home span { color: #52b788; }
-    nav a.nav-link { font-size: .85rem; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; }
-    nav a.nav-link:hover { color: #52b788; }
-    nav .nav-spacer { flex: 1; }
-
-    footer {
-      text-align: center;
-      padding: 24px;
-      font-size: 0.8rem;
-      color: #999;
-      border-top: 1px solid #e0dbd2;
-    }
+    .faq-search input:focus { border-color: var(--mint-ink); outline: none; box-shadow: 0 0 0 3px var(--mint-wash); }
+    .faq-empty { margin-top: 12px; color: var(--slate); }
+    .faq { margin-top: 1.2em; }
+    .faq .answer p + p { margin-top: .7em; }
   </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<nav>
-  <a href="/" class="nav-home">TIRA<span>.</span></a>
-  <div class="nav-spacer"></div>
-  <a href="/" class="nav-link">Home</a>
-  <a href="/guide/" class="nav-link">Guide</a>
-  <a href="/privacy/" class="nav-link">Privacy</a>
-</nav>
-
-<header>
-  <h1>TIRA</h1>
-  <p>Your team, together</p>
+<header class="site-header">
+  <div class="wrap">
+    <a class="wordmark" href="/" aria-label="TIRA home">TIRA<i>.</i></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      Menu
+    </button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <a href="/#features">Features</a>
+      <a href="/clubs/">For clubs</a>
+      <a href="/guide/">Guide</a>
+      <a href="/support/" aria-current="page">Help</a>
+      <a class="btn" href="/get/">Get the app</a>
+    </nav>
+  </div>
 </header>
 
-<main>
+<main id="main">
+<div class="turf on-turf page-head">
+  <div class="chalk-lines" aria-hidden="true">
+    <svg viewBox="0 0 1440 400" preserveAspectRatio="xMaxYMid slice" fill="none" stroke="currentColor" stroke-width="3">
+      <line x1="1180" y1="0" x2="1180" y2="400"/>
+      <circle cx="1180" cy="200" r="130"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <h1 class="display">Help and support</h1>
+    <p class="lede">Kia ora! Most things can be sorted quickly. Find your question below, or get in touch.</p>
+  </div>
+</div>
 
-  <div class="highlight">
-    <p>
-      <strong>Kia ora!</strong> Need help with TIRA? We're here for you.
-      Most issues can be sorted quickly. Read on or get in touch directly.
-    </p>
+<div class="wrap prose">
+<div class="grid-3 quick">
+    <div class="panel">
+      <h2 class="h3">New to TIRA?</h2>
+      <p>The <a href="/guide/">quick start guide</a> gets you set up in about five minutes: signing in, registering your child and linking your account.</p>
+    </div>
+    <div class="panel">
+      <h2 class="h3">Is TIRA down?</h2>
+      <p>Check <a href="/status/">tiraapp.nz/status</a>. We post problems there first, and the app shows the same notice at the top of the Schedule.</p>
+    </div>
+    <div class="panel">
+      <h2 class="h3">Report a problem</h2>
+      <p>The fastest way to reach us: in the app, go to <strong>Profile → Report a problem</strong> and tell us what's happening.</p>
+    </div>
   </div>
 
-  <div class="card">
-    <h3>New to TIRA?</h3>
-    <p>Read the <a href="/guide/">Quick Start Guide</a> to get set up in about five minutes, step by step. Covers signing in, registering your child, and linking your account.</p>
+  <h2 id="questions">Common questions</h2>
+  <div class="faq-search" hidden>
+    <label for="faq-q">Search the questions</label>
+    <input id="faq-q" type="search" autocomplete="off" placeholder="For example: reminders, PlayHQ, rides">
+    <p id="faq-empty" class="faq-empty" hidden>No questions match that. Try another word, or email <a href="mailto:support@tiraapp.nz">support@tiraapp.nz</a>.</p>
   </div>
-
-  <div class="card">
-    <h3>Is TIRA down?</h3>
-    <p>Check <a href="/status/">tiraapp.nz/status</a>. If TIRA has a problem, we post it there first, and the
-    app shows the same notice at the top of the Schedule. While it's down, the app still shows your schedule
-    as it was last loaded.</p>
-  </div>
-
-  <h2>Report a Problem in the App</h2>
-  <p>
-    The fastest way to get help is through the app itself. Go to
-    <strong>Profile → Report a problem</strong> and describe what's happening.
-    Your message goes straight to our team.
-  </p>
-
-  <h2>Contact Us Directly</h2>
-
-  <div class="card">
-    <h3>General Support</h3>
-    <p>For any questions, issues, or feedback:<br />
-    <a href="mailto:support@tiraapp.nz">support@tiraapp.nz</a></p>
-  </div>
-
-  <div class="card">
-    <h3>Privacy &amp; Data Requests</h3>
-    <p>To request access, correction, or deletion of your data:<br />
-    <a href="mailto:privacy@tiraapp.nz">privacy@tiraapp.nz</a></p>
-    <p>We respond within 20 working days.</p>
-  </div>
-
-  <h2>Common Questions</h2>
-
-  <div class="card">
-    <h3>How do I delete my account?</h3>
+  <div class="faq" id="faq">
+    <details id="how-do-i-delete-my-account">
+      <summary>How do I delete my account?</summary>
+      <div class="answer">
     <p>Go to <strong>Profile → Delete account</strong>.
     Your account is deleted straight away. Some team records other members rely on
     stay with the team without your name, and messages you sent are deleted
     automatically 60 days after they were sent. Our
     <a href="/delete-account/">account deletion page</a> shows exactly what is deleted and what is kept.</p>
-  </div>
-
-  <div class="card">
-    <h3>I didn't receive my verification code</h3>
+      </div>
+    </details>
+    <details id="i-didn-t-receive-my-verification-code">
+      <summary>I didn't receive my verification code</summary>
+      <div class="answer">
     <p><strong>SMS code:</strong> Check that your phone number is correct and has no spaces or extra digits.
     Wait 60 seconds and tap <strong>Resend code</strong>. If it still doesn't arrive,
     email us with your phone number and we'll look into it.</p>
     <p><strong>Email code:</strong> Check your spam or junk folder. Verification emails can land there.
     The code expires after 60 seconds; tap <strong>Resend code</strong> to get a fresh one.</p>
-  </div>
-
-  <div class="card">
-    <h3>I can't see my team after logging in</h3>
+      </div>
+    </details>
+    <details id="i-can-t-see-my-team-after-logging-in">
+      <summary>I can't see my team after logging in</summary>
+      <div class="answer">
     <p>Ask your coach to check that your phone number matches exactly what's on the team roster.
     If you're a coach, try pulling down to refresh the Schedule tab.</p>
-  </div>
-
-  <div class="card">
-    <h3>Push notifications aren't working</h3>
+      </div>
+    </details>
+    <details id="push-notifications-aren-t-working">
+      <summary>Push notifications aren't working</summary>
+      <div class="answer">
     <p>Go to your device <strong>Settings → TIRA → Notifications</strong> and make sure
     notifications are enabled. Then open the app and check <strong>Profile</strong> to
     confirm your device is registered. If you signed out, sign back in: a signed-out phone
     doesn't get your notifications.</p>
-  </div>
-
-  <div class="card">
-    <h3>Why does my Schedule only show 5 events?</h3>
+      </div>
+    </details>
+    <details id="why-does-my-schedule-only-show-5-events">
+      <summary>Why does my Schedule only show 5 events?</summary>
+      <div class="answer">
     <p>To keep it easy to read, the Schedule shows your next <strong>5</strong> events
     (the big <strong>Next up</strong> card counts as one). Tap <strong>Show more</strong>
     at the bottom of the list to see the rest. <strong>Show past events</strong> lists
     your 5 most recent past events.</p>
-  </div>
-
-  <div class="card">
-    <h3>Where is our season record, and how do I set the season?</h3>
+      </div>
+    </details>
+    <details id="where-is-our-season-record-and-how-do-i-set-the-season">
+      <summary>Where is our season record, and how do I set the season?</summary>
+      <div class="answer">
     <p>The <strong>Season Card</strong> at the top of the <strong>Team</strong> tab shows
     your wins, draws and losses and your last 5 results. Coaches, managers and admins
     set the season's first and last month under <strong>Profile → Team settings</strong>
     (managers see this as <strong>Season dates</strong>). With no dates set, every game counts.
     Results appear once a coach opens a game and taps <strong>Record result</strong>.
     They can do this for up to 14 days after the game.</p>
-  </div>
-
-  <div class="card">
-    <h3>A game was stopped early. How do I record it?</h3>
+      </div>
+    </details>
+    <details id="a-game-was-stopped-early-how-do-i-record-it">
+      <summary>A game was stopped early. How do I record it?</summary>
+      <div class="answer">
     <p>Open the game, tap <strong>Record result</strong> and tick <strong>Game abandoned</strong>.
     The score is optional: enter the score when play stopped, or leave it blank, and use the
     note to say why (rain, injury, bad light). The game shows <strong>Abandoned</strong> and
     counts as an <strong>A</strong> in the Season Card. It counts as played, but its score isn't
     added to the season's goals.</p>
-  </div>
-
-  <div class="card">
-    <h3>Who can be MVP (player of the match)?</h3>
+      </div>
+    </details>
+    <details id="who-can-be-mvp-player-of-the-match">
+      <summary>Who can be MVP (player of the match)?</summary>
+      <div class="answer">
     <p>When recording a result, a coach can pick an MVP from the team's players and
     registered children. They get a &#9733; next to their name on the roster for the season.
     Children are always shown by first name only, and a child whose parent has hidden
     them from the roster can't be picked.</p>
-  </div>
-
-  <div class="card">
-    <h3>Who is included in the Going / Maybe / Can't count?</h3>
+      </div>
+    </details>
+    <details id="who-is-included-in-the-going-maybe-can-t-count">
+      <summary>Who is included in the Going / Maybe / Can't count?</summary>
+      <div class="answer">
     <p>Players and registered children are always counted. Coaches, managers and admins
     are counted only on a team with <strong>no registered children</strong>: an adult
     team, where they usually play too. On a kids' team they're usually parent volunteers,
     so their own answers stay out of the count and a parent who is also the manager isn't
     counted on top of their child. Parents are never counted; their child's answer is
     what counts. Everyone's answers still show in the event's attendance list.</p>
-  </div>
-
-  <div class="card">
-    <h3>What reminders does TIRA send before an event?</h3>
+      </div>
+    </details>
+    <details id="what-reminders-does-tira-send-before-an-event">
+      <summary>What reminders does TIRA send before an event?</summary>
+      <div class="answer">
     <p><strong>3 days, 1 day and 2 hours before:</strong> an "Are you coming?" reminder,
     only to players who haven't answered and to parents of children who haven't answered.
     <strong>1 hour before:</strong> a "starting soon" reminder to everyone who hasn't said
     <strong>Can't</strong>. Coaches, managers and admins get it only if they said
     Going or Maybe. If an event is moved, the reminders still to come are sent for the
     new time.</p>
-  </div>
-
-  <div class="card">
-    <h3>I'm a parent and the team's manager. Why didn't my answer count for my child?</h3>
+      </div>
+    </details>
+    <details id="i-m-a-parent-and-the-team-s-manager-why-didn-t-my-answer-cou">
+      <summary>I'm a parent and the team's manager. Why didn't my answer count for my child?</summary>
+      <div class="answer">
     <p>Your answer at the top of the event is <strong>your</strong> attendance. To answer for
     your child, open the event and tap your child's name under <strong>Players attendance</strong>.</p>
-  </div>
-
-  <div class="card">
-    <h3>Where do I answer whether I'm coming?</h3>
+      </div>
+    </details>
+    <details id="where-do-i-answer-whether-i-m-coming">
+      <summary>Where do I answer whether I'm coming?</summary>
+      <div class="answer">
     <p>Open the event and tap <strong>Going</strong>, <strong>Maybe</strong> or <strong>Can't</strong>.
     The Schedule shows whether you've answered: <em>Your team is counting on you: Update your
     availability</em> means you haven't yet, so tap the card to answer. Parents see the same for their
     children (<em>Nearly there!</em> when some have answered), and answer for each child on the event.
     Once you've answered, the card shows it, for example <em>You're going</em>.</p>
-  </div>
-
-  <div class="card">
-    <h3>My partner accepted the invite but can't see our team</h3>
+      </div>
+    </details>
+    <details id="my-partner-accepted-the-invite-but-can-t-see-our-team">
+      <summary>My partner accepted the invite but can't see our team</summary>
+      <div class="answer">
     <p>The invite code links your partner to your child, but the <strong>team code</strong>
     is what adds the team to their app. Ask them to go to <strong>Profile</strong>, tap
     <strong>Join a team</strong>, enter the team code (it's on your Team tab) and choose
     <strong>Parent or guardian</strong>. When asked "Is your child on this team?", they tap
     <strong>Skip for now</strong>. Please don't register your child again, as that makes a second copy.</p>
-  </div>
-
-  <div class="card">
-    <h3>How do I reply to one message in the team chat?</h3>
+      </div>
+    </details>
+    <details id="how-do-i-reply-to-one-message-in-the-team-chat">
+      <summary>How do I reply to one message in the team chat?</summary>
+      <div class="answer">
     <p>Tap and hold the message, then tap <strong>Reply</strong>. Your reply shows a short
     quote of the original, and the person you replied to gets a notification. Tap a quote to
     jump back to the original message. Polls can't be replied to.</p>
-  </div>
-
-  <div class="card">
-    <h3>How do I mention someone in the team chat?</h3>
+      </div>
+    </details>
+    <details id="how-do-i-mention-someone-in-the-team-chat">
+      <summary>How do I mention someone in the team chat?</summary>
+      <div class="answer">
     <p>Type <strong>@</strong> in the message box and tap a name from the list. The name shows
     in colour, and that person gets a notification saying you mentioned them. A message that
     mentions you has a green bar down its left side. Typing a name by hand without picking it
     from the list doesn't notify anyone.</p>
-  </div>
-
-  <div class="card">
-    <h3>Can I copy a message or an announcement?</h3>
+      </div>
+    </details>
+    <details id="can-i-copy-a-message-or-an-announcement">
+      <summary>Can I copy a message or an announcement?</summary>
+      <div class="answer">
     <p>Yes. Tap and hold a chat message or an announcement, then tap <strong>Copy</strong>.
     On some phones it says <strong>Copy or share</strong> and opens your phone's share menu:
     tap <strong>Copy</strong> there. Once you paste it into another app it's out of TIRA, so
     take care with children's names.</p>
-  </div>
-
-  <div class="card">
-    <h3>Can I say why an event is cancelled or postponed?</h3>
+      </div>
+    </details>
+    <details id="can-i-say-why-an-event-is-cancelled-or-postponed">
+      <summary>Can I say why an event is cancelled or postponed?</summary>
+      <div class="answer">
     <p>Yes. Coaches, managers and admins can add a short reason (up to 60 characters) when they
     cancel or postpone, like <em>Ground closed after rain</em>. The team sees it in the
     notification, on the event's card in the Schedule tab and on the event itself. Keep it to the
     venue or the weather, and please don't name a child. Setting the event back to Scheduled
     removes the reason.</p>
-  </div>
-
-  <div class="card">
-    <h3>Can I close availability early for a game?</h3>
+      </div>
+    </details>
+    <details id="can-i-close-availability-early-for-a-game">
+      <summary>Can I close availability early for a game?</summary>
+      <div class="answer">
     <p>Yes, if your team uses it. A coach or admin turns on <strong>Close availability</strong> in
     Team settings. New games then start with <strong>Allow closing availability</strong> already
     ticked (untick it on any game you don't want to close; games added earlier need ticking by hand).
@@ -320,62 +262,69 @@
     <strong>Close availability</strong>: people can still answer afterwards, but coaches see their
     answer marked <em>late</em>, so they know who answered on time. Families never see who is late.
     <strong>Reopen</strong> removes the late tags.</p>
-  </div>
-
-  <div class="card">
-    <h3>Who can see who's coming?</h3>
+      </div>
+    </details>
+    <details id="who-can-see-who-s-coming">
+      <summary>Who can see who's coming?</summary>
+      <div class="answer">
     <p>Coaches, managers and admins always can. Everyone else sees only their own answer (parents: their
     own child's) unless a coach, manager or admin turns on <strong>Share availability</strong> in Team
     settings. Then parents see every child's first name and answer, and on an adult team players see a
     <strong>Who's available</strong> list. Nobody else ever sees notes, ages or lift requests.</p>
-  </div>
-
-  <div class="card">
-    <h3>Why is Share availability already on for my new team?</h3>
+      </div>
+    </details>
+    <details id="why-is-share-availability-already-on-for-my-new-team">
+      <summary>Why is Share availability already on for my new team?</summary>
+      <div class="answer">
     <p>New Senior, Masters and Mixed teams start with it on, so players can see who's coming. Junior
     teams start with it off. If a child is registered on a team that started with it on, TIRA turns it
     off by itself, so no child's name is shared unless a coach chooses to. You can change it any time in
     <strong>Team settings</strong>, and once you have, TIRA leaves your choice alone.</p>
-  </div>
-
-  <div class="card">
-    <h3>Can I use TIRA for a group that doesn't play games?</h3>
+      </div>
+    </details>
+    <details id="can-i-use-tira-for-a-group-that-doesn-t-play-games">
+      <summary>Can I use TIRA for a group that doesn't play games?</summary>
+      <div class="answer">
     <p>Yes. When you create the team, pick <strong>Activity group</strong> under the sports. It's for
     rides, walks, working bees and other groups that meet but don't play other teams. You can also turn
     off <strong>Record results</strong> in Team settings for any team. Events then default to
     <strong>Activity</strong>, there are no scores, season record or MVP, and TIRA doesn't send result
     reminders. Availability, reminders, messages, rides and volunteer roles all work as usual.</p>
-  </div>
-
-  <div class="card">
-    <h3>Can I add someone to call for an event?</h3>
+      </div>
+    </details>
+    <details id="can-i-add-someone-to-call-for-an-event">
+      <summary>Can I add someone to call for an event?</summary>
+      <div class="answer">
     <p>Yes. Coaches, managers and admins can tick <strong>Add a contact</strong> when adding an event (it's
     saved on every event in a repeating series), or add one later from the <strong>Contact</strong> card on
     the event. Everyone on the team sees the name and number on the event and its Schedule card; on the
     event, tap the number to call. Only add someone who's happy for the team to see their number. It's
     deleted automatically 7 days after the event.</p>
-  </div>
-
-  <div class="card">
-    <h3>Where are TIRA's Terms of Use, and when did I agree to them?</h3>
+      </div>
+    </details>
+    <details id="where-are-tira-s-terms-of-use-and-when-did-i-agree-to-them">
+      <summary>Where are TIRA's Terms of Use, and when did I agree to them?</summary>
+      <div class="answer">
     <p>Read them any time at <a href="/terms/">tiraapp.nz/terms</a>, or in the app at the bottom of the
     <strong>Profile</strong> tab. Everyone agrees once, when they sign in: the sign-in screen says
     <em>&ldquo;By continuing, you agree to TIRA's Terms of Use and Privacy Policy&rdquo;</em>, and there's no
     box to tick. You need to be 16 or older to have your own account; younger players are registered by a
     parent or guardian.</p>
-  </div>
-
-  <div class="card">
-    <h3>Can I add a whole season of games at once?</h3>
+      </div>
+    </details>
+    <details id="can-i-add-a-whole-season-of-games-at-once">
+      <summary>Can I add a whole season of games at once?</summary>
+      <div class="answer">
     <p>Yes. On <strong>Add event</strong>, tap the list icon beside <em>Describe your event</em>, then paste or
     type your games, one game per line, each with its date (for example
     <em>Sat 22/11 9:30am vs Eastern FC @ Ngataringa Park (H) Round 2</em>). TIRA shows every game before
     anything is added, never adds a game that's already on the schedule, and puts your note on each one. The
     team isn't sent a notification; the usual reminders go out before each game.</p>
-  </div>
-
-  <div class="card">
-    <h3>Can TIRA get our games from PlayHQ?</h3>
+      </div>
+    </details>
+    <details id="can-tira-get-our-games-from-playhq">
+      <summary>Can TIRA get our games from PlayHQ?</summary>
+      <div class="answer">
     <p>Yes, if your club runs its competitions on PlayHQ. TIRA support switches it on for your club. In
     the app, go to <strong>Team settings &rarr; Fixtures from PlayHQ</strong> and tap it to send us a request.
     Once it's on, a coach, manager or admin taps <strong>Find your team in PlayHQ</strong> and follows your
@@ -383,27 +332,30 @@
     and TIRA adds your games and keeps them up to date: new times, grounds and cancellations come through on
     their own, and the team is told about changes. If you change a game's time, ground or status yourself, that
     game stops updating from PlayHQ and coaches are told when PlayHQ changes it.</p>
-  </div>
-
-  <div class="card">
-    <h3>How do I change my team's volunteer roles?</h3>
+      </div>
+    </details>
+    <details id="how-do-i-change-my-team-s-volunteer-roles">
+      <summary>How do I change my team's volunteer roles?</summary>
+      <div class="answer">
     <p>Coaches, managers and admins: go to <strong>Team settings &rarr; Volunteer roles</strong>. Your roles are
     numbered in the order events show them. Move one with the up and down arrows, remove one with
     &#x2715;, or type a new one (for example <em>Snack Duty</em>) and tap <strong>Add</strong>. Changes save as
     you go, so just tap <strong>Done</strong> when you're finished. <strong>Reset to defaults</strong> puts back
     your sport's starting list. A team always keeps at least one role. To stop using them, turn Volunteer
     roles off.</p>
-  </div>
-
-  <div class="card">
-    <h3>Can I copy an event's details?</h3>
+      </div>
+    </details>
+    <details id="can-i-copy-an-event-s-details">
+      <summary>Can I copy an event's details?</summary>
+      <div class="answer">
     <p>Yes. On the Schedule tab, press and hold any event card (the Next up card or one in the
     list). TIRA copies the title and opponent, the date and time, the place and the event's notes, ready
     to paste into a text or email. It never copies who's going, children's names or the lineup.</p>
-  </div>
-
-  <div class="card">
-    <h3>How do I pick and share the cricket team for a game?</h3>
+      </div>
+    </details>
+    <details id="how-do-i-pick-and-share-the-cricket-team-for-a-game">
+      <summary>How do I pick and share the cricket team for a game?</summary>
+      <div class="answer">
     <p>Coaches, managers and admins of a cricket team: turn on <strong>Game day lineup</strong> in
     <strong>Team settings &rarr; Features</strong>. Then open a game and tap <strong>Game day lineup</strong>.
     TIRA suggests a batting order from who's going. Move players, mark the captain, keeper and
@@ -412,41 +364,59 @@
     announcement or the team chat, or <strong>Copy</strong> to paste the team anywhere. For junior teams,
     TIRA's batting pods make sure every child gets turns at the top of the order; <strong>Season</strong>
     shows who's due a turn.</p>
-  </div>
-
-  <div class="card">
-    <h3>How do I know where my child is batting?</h3>
+      </div>
+    </details>
+    <details id="how-do-i-know-where-my-child-is-batting">
+      <summary>How do I know where my child is batting?</summary>
+      <div class="answer">
     <p>Once the coach publishes the lineup, open the game in the Schedule tab. You'll see a line for your
     child, such as <em>Eli bats in the top order &middot; captain</em>, and the full batting order with first
     names only. Top order is batters 1 to 3, middle order 4 to 7 and lower order 8 onwards. Players who
     weren't picked for that game aren't listed.</p>
-  </div>
-
-  <div class="card">
-    <h3>My child is already on TIRA. Do I have to fill in their details again for a new team?</h3>
+      </div>
+    </details>
+    <details id="my-child-is-already-on-tira-do-i-have-to-fill-in-their-detai">
+      <summary>My child is already on TIRA. Do I have to fill in their details again for a new team?</summary>
+      <div class="answer">
     <p>No. Join the new team, then open <strong>Register your child</strong>. Under
     <strong>Already on TIRA?</strong> tap your child, and TIRA fills in their name, date of birth,
     emergency contact and medical notes from their existing registration. Check them, then tick the
     consent boxes for the new team. Privacy settings start fresh for each team, so you choose what
     the new coaches can see. Later, when you change the emergency contact in the
     <strong>Privacy dashboard</strong>, you can update it on all their teams at once.</p>
-  </div>
-
-  <div class="card">
-    <h3>Can I use TIRA at a ground with no signal?</h3>
+      </div>
+    </details>
+    <details id="can-i-use-tira-at-a-ground-with-no-signal">
+      <summary>Can I use TIRA at a ground with no signal?</summary>
+      <div class="answer">
     <p>Yes. TIRA opens with what it saved the last time it was online: the schedule for every team
     you're in, each event's venue and notes, who's coming, updates and recent chat. A strip at the top
     shows you're offline. Tap the venue to open your maps app, or hold it to copy the address.
     Answering, chatting and signing in need signal, and TIRA tells you straight away. Tip: open TIRA
     before you leave home so it has the latest details.</p>
-  </div>
-
-  <div class="card">
-    <h3>What are the amber "to do" rows on a game?</h3>
+      </div>
+    </details>
+    <details id="what-are-the-amber-to-do-rows-on-a-game">
+      <summary>What are the amber "to do" rows on a game?</summary>
+      <div class="answer">
     <p>Only coaches, managers and admins see them. On a game that hasn't started, anything not set yet
     (the contact, the game day lineup or notes for families) shows with a dashed amber edge and
     a &#xFF0B;. Tap it to fix it, and it goes back to a normal row. Families never see these, and nothing is
     sent to anyone.</p>
+      </div>
+    </details>
+  </div>
+
+  <h2>Contact us</h2>
+  <div class="grid-2">
+    <div class="panel">
+      <h3>General support</h3>
+      <p>Questions, problems or feedback: <a href="mailto:support@tiraapp.nz">support@tiraapp.nz</a></p>
+    </div>
+    <div class="panel">
+      <h3>Privacy and data requests</h3>
+      <p>To see, correct or delete your data: <a href="mailto:privacy@tiraapp.nz">privacy@tiraapp.nz</a>. We respond within 20 working days.</p>
+    </div>
   </div>
 
   <h2>Support TIRA</h2>
@@ -455,20 +425,82 @@
     anyone can <a href="/support-tira/">help keep TIRA free</a>.
   </p>
 
-  <h2>Privacy Policy</h2>
+  <h2>Your privacy</h2>
   <p>
     Read our full <a href="/privacy/">Privacy Policy</a> to understand
     how we collect, use, and protect your data.
   </p>
-
+</div>
 </main>
 
-<footer>
-  &copy; 2026 TIRA &middot; Made in Aotearoa 🌿 &middot;
-  <a href="/privacy/">Privacy Policy</a> &middot;
-  <a href="/terms/">Terms of Use</a> &middot;
-  <a href="mailto:support@tiraapp.nz">support@tiraapp.nz</a>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div class="about">
+        <a class="wordmark" href="/" aria-label="TIRA home">TIRA<i>.</i></a>
+        <p>The free team app for community sport. Made in Aotearoa New Zealand.</p>
+      </div>
+      <div>
+        <h2>The app</h2>
+        <ul>
+          <li><a href="/get/">Get the app</a></li>
+          <li><a href="/guide/">Quick start guide</a></li>
+          <li><a href="/support/">Help and support</a></li>
+          <li><a href="/status/">Is TIRA working?</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Clubs and sponsors</h2>
+        <ul>
+          <li><a href="/clubs/">TIRA for clubs</a></li>
+          <li><a href="/partners/">Become a partner</a></li>
+          <li><a href="/support-tira/">Help keep TIRA free</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Your data</h2>
+        <ul>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Use</a></li>
+          <li><a href="/delete-account/">Delete your account</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <p>&copy; 2026 TIRA. Operated by Aurodox Ltd.</p>
+      <p><a href="mailto:support@tiraapp.nz">support@tiraapp.nz</a></p>
+    </div>
+  </div>
 </footer>
 
+<script src="/assets/site.js" defer></script>
+<script>
+  // Search the questions, and open one when the link points at it.
+  (function () {
+    var box = document.querySelector('.faq-search');
+    var input = document.getElementById('faq-q');
+    var empty = document.getElementById('faq-empty');
+    var items = Array.prototype.slice.call(document.querySelectorAll('#faq details'));
+    box.hidden = false;
+    input.addEventListener('input', function () {
+      var words = input.value.toLowerCase().trim().split(/\s+/).filter(Boolean);
+      var shown = 0;
+      items.forEach(function (d) {
+        var text = d.textContent.toLowerCase();
+        var hit = words.every(function (w) { return text.indexOf(w) >= 0; });
+        d.hidden = !hit;
+        if (hit) shown++;
+      });
+      empty.hidden = shown > 0;
+    });
+    function openFromHash() {
+      var id = decodeURIComponent(location.hash.slice(1));
+      var d = id && document.getElementById(id);
+      if (d && d.tagName === 'DETAILS') { d.open = true; d.scrollIntoView(); }
+    }
+    openFromHash();
+    window.addEventListener('hashchange', openFromHash);
+  })();
+</script>
 </body>
 </html>

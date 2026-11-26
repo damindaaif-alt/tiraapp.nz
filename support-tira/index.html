@@ -1,179 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-NZ">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Support TIRA | TIRA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Help keep TIRA free | TIRA</title>
+  <meta name="description" content="TIRA is free for every team, with no ads. Here's how businesses and families can help keep it that way." />
+  <link rel="canonical" href="https://tiraapp.nz/support-tira/" />
+  <meta name="theme-color" content="#1a3a2a" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="TIRA" />
+  <meta property="og:title" content="Help keep TIRA free | TIRA" />
+  <meta property="og:description" content="TIRA is free for every team, with no ads. Here's how businesses and families can help keep it that way." />
+  <meta property="og:url" content="https://tiraapp.nz/support-tira/" />
+  <meta property="og:image" content="https://tiraapp.nz/android-chrome-512x512.png" />
+  <meta name="twitter:card" content="summary" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
+  <link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/site.css">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #f8f4ed;
-      color: #1a1a1a;
-      line-height: 1.7;
-    }
-
-    header {
-      background: #1a3a2a;
-      padding: 28px 24px;
-      text-align: center;
-    }
-    header h1 {
-      font-size: 2rem;
-      font-weight: 900;
-      color: #fff;
-      letter-spacing: 8px;
-    }
-    header p {
-      color: #52b788;
-      margin-top: 4px;
-      font-size: 0.9rem;
-      letter-spacing: 1px;
-    }
-
-    main {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 40px 24px 80px;
-    }
-
-    h2 {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: #1a3a2a;
-      margin-top: 36px;
-      margin-bottom: 10px;
-      padding-bottom: 6px;
-      border-bottom: 2px solid #52b788;
-    }
-
-    p { margin-bottom: 14px; }
-
-    ul {
-      margin: 10px 0 14px 20px;
-    }
-    ul li { margin-bottom: 6px; }
-
-    .highlight {
-      background: #1a3a2a;
-      color: #fff;
-      border-radius: 12px;
-      padding: 20px 24px;
-      margin: 32px 0;
-    }
-    .highlight p { margin: 0; color: #f8f4ed; }
-    .highlight strong { color: #52b788; }
-
-    .card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 24px;
-      margin: 20px 0;
-      border: 1px solid #e0dbd2;
-    }
-    .card h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      color: #1a3a2a;
-      margin-bottom: 8px;
-    }
-
-    a { color: #1a3a2a; font-weight: 600; }
-
-    nav {
-      background: #1a3a2a;
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      height: 60px;
-      gap: 24px;
-    }
-    nav a.nav-home { font-size: 1.1rem; font-weight: 900; color: #fff; letter-spacing: 5px; text-decoration: none; }
-    nav a.nav-home span { color: #52b788; }
-    nav a.nav-link { font-size: .85rem; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; }
-    nav a.nav-link:hover { color: #52b788; }
-    nav .nav-spacer { flex: 1; }
-
-    footer {
-      text-align: center;
-      padding: 24px;
-      font-size: 0.8rem;
-      color: #999;
-      border-top: 1px solid #e0dbd2;
-    }
-    .btn {
-      display: inline-block;
-      background: #1a3a2a;
-      color: #fff;
-      text-decoration: none;
-      font-weight: 700;
-      border-radius: 10px;
-      padding: 12px 22px;
-      margin-top: 6px;
-    }
-    .btn:hover { background: #24503a; }
-    .tiers { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 16px 0; }
-    @media (min-width: 640px) { .tiers { grid-template-columns: repeat(3, 1fr); } }
-    .tier { background: #fff; border: 1px solid #e0dbd2; border-radius: 12px; padding: 18px; }
-    .tier h3 { font-size: 1rem; color: #1a3a2a; margin-bottom: 6px; }
-    .tier p { font-size: .92rem; margin: 0; }
+    .prose .panel + .panel { margin-top: 14px; }
   </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<nav>
-  <a href="/" class="nav-home">TIRA<span>.</span></a>
-  <div class="nav-spacer"></div>
-  <a href="/" class="nav-link">Home</a>
-  <a href="/guide/" class="nav-link">Guide</a>
-  <a href="/privacy/" class="nav-link">Privacy</a>
-</nav>
-
-<header>
-  <h1>TIRA</h1>
-  <p>Your team, together</p>
+<header class="site-header">
+  <div class="wrap">
+    <a class="wordmark" href="/" aria-label="TIRA home">TIRA<i>.</i></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      Menu
+    </button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <a href="/#features">Features</a>
+      <a href="/clubs/">For clubs</a>
+      <a href="/guide/">Guide</a>
+      <a href="/support/">Help</a>
+      <a class="btn" href="/get/">Get the app</a>
+    </nav>
+  </div>
 </header>
 
-<main>
-  <div class="highlight">
-    <p>
-      <strong>Kia ora!</strong> TIRA is free for every team, with no ads. It's built and run by a small
-      team in Aotearoa. If it saves you time, here's how you can help keep it that way.
-    </p>
+<main id="main">
+<div class="turf on-turf page-head">
+  <div class="chalk-lines" aria-hidden="true">
+    <svg viewBox="0 0 1440 400" preserveAspectRatio="xMaxYMid slice" fill="none" stroke="currentColor" stroke-width="3">
+      <line x1="1180" y1="0" x2="1180" y2="400"/>
+      <circle cx="1180" cy="200" r="130"/>
+    </svg>
   </div>
+  <div class="wrap">
+    <h1 class="display">Help keep TIRA free</h1>
+    <p class="lede">Kia ora! TIRA is free for every team, with no ads, and it's built and run by a small team in Aotearoa. If it saves you time, here's how you can help.</p>
+  </div>
+</div>
 
-  <div class="card">
+<div class="wrap prose">
+<div class="panel">
     <h3>Become a partner</h3>
     <p>Local businesses can put their logo on the app's Partners tab and reach the teams and families
     in their area.</p>
     <a class="btn" href="/partners/">Become a partner</a>
   </div>
 
-  <div class="card">
+  <div class="panel">
     <h3>Make a donation</h3>
     <p>Every coffee helps cover the costs of running TIRA, like text messages and servers.</p>
     <a class="btn" href="https://www.paypal.com/ncp/payment/F8UKB25TQSLWN" rel="noopener">Donate with PayPal</a>
-    <p style="margin-top:12px">You can also give from the app: <strong>Profile &rarr; Support</strong>.</p>
+    <p>You can also give from the app: <strong>Profile &rarr; Support</strong>.</p>
   </div>
 
-  <div class="card">
+  <div class="panel">
     <h3>Tell another team</h3>
     <p>The best support is another club using TIRA. Share <a href="/get">tiraapp.nz/get</a> with a coach
     or team manager you know.</p>
   </div>
+</div>
 </main>
 
-<footer>
-  &copy; 2026 TIRA &mdash; Made in Aotearoa 🌿 &mdash;
-  <a href="/privacy/">Privacy Policy</a> &middot;
-  <a href="/terms/">Terms of Use</a> &middot;
-  <a href="mailto:support@tiraapp.nz">support@tiraapp.nz</a>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div class="about">
+        <a class="wordmark" href="/" aria-label="TIRA home">TIRA<i>.</i></a>
+        <p>The free team app for community sport. Made in Aotearoa New Zealand.</p>
+      </div>
+      <div>
+        <h2>The app</h2>
+        <ul>
+          <li><a href="/get/">Get the app</a></li>
+          <li><a href="/guide/">Quick start guide</a></li>
+          <li><a href="/support/">Help and support</a></li>
+          <li><a href="/status/">Is TIRA working?</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Clubs and sponsors</h2>
+        <ul>
+          <li><a href="/clubs/">TIRA for clubs</a></li>
+          <li><a href="/partners/">Become a partner</a></li>
+          <li><a href="/support-tira/">Help keep TIRA free</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Your data</h2>
+        <ul>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Use</a></li>
+          <li><a href="/delete-account/">Delete your account</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <p>&copy; 2026 TIRA. Operated by Aurodox Ltd.</p>
+      <p><a href="mailto:support@tiraapp.nz">support@tiraapp.nz</a></p>
+    </div>
+  </div>
 </footer>
 
+<script src="/assets/site.js" defer></script>
 </body>
 </html>
