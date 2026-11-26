@@ -73,8 +73,10 @@
     .bib.going { background: var(--mint-ink); }
     .bib.maybe { background: var(--paper); box-shadow: inset 0 0 0 2px var(--mint-ink); }
     .bib.cant  { background: #b9c3bd; }
-    /* Mia: ringed in amber, empty until the visitor answers for her. */
-    .bib.you       { background: var(--paper); box-shadow: inset 0 0 0 2px #b9c3bd, 0 0 0 2px var(--paper), 0 0 0 4px var(--amber-ink); }
+    /* Mia: her spot stays empty until the visitor answers, then her square
+       appears in that answer's colour, ringed in amber so it's clearly hers. */
+    .bib.you       { visibility: hidden; }
+    .bib.you.going, .bib.you.maybe, .bib.you.cant { visibility: visible; }
     .bib.you.going { background: var(--mint-ink); box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--amber-ink); }
     .bib.you.maybe { box-shadow: inset 0 0 0 2px var(--mint-ink), 0 0 0 2px var(--paper), 0 0 0 4px var(--amber-ink); }
     .bib.you.cant  { background: #b9c3bd; box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--amber-ink); }
@@ -259,7 +261,6 @@
             <span><i style="background:var(--mint-ink)"></i>Going</span>
             <span><i style="box-shadow:inset 0 0 0 2px var(--mint-ink)"></i>Maybe</span>
             <span><i style="background:#b9c3bd"></i>Can't</span>
-            <span><i style="box-shadow:inset 0 0 0 2px #b9c3bd, 0 0 0 1px var(--paper), 0 0 0 3px var(--amber-ink)"></i>Mia</span>
           </div>
         </div>
 
@@ -501,10 +502,12 @@
     var btns = ask.querySelectorAll('button');
     btns.forEach(function (b) {
       b.addEventListener('click', function () {
+        // why: drop her square in on the first answer only; later changes just recolour.
+        // The "drop" keyframes exist only when the visitor allows motion.
+        you.style.animation = mine ? 'none' : 'drop .4s cubic-bezier(.2,.8,.3,1.2)';
         mine = b.getAttribute('data-a');
         btns.forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
         result.textContent = RESULT[mine];
-        you.style.animation = 'none';
         you.className = 'bib you ' + mine;
         order.forEach(function (k) {
           document.querySelector('[data-k="' + k + '"]').textContent = others[k] + (k === mine ? 1 : 0);
