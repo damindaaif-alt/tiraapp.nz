@@ -62,7 +62,7 @@
     .game .where { font-size: .95rem; color: var(--slate); margin-top: 4px; }
 
     .count { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); }
-    .count dl { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+    .count dl { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
     .count dl div { display: flex; flex-direction: column-reverse; }
     .count dt { font-size: .8rem; color: var(--slate); line-height: 1.2; }
     .count dd { margin: 0; font-size: 1.9rem; font-stretch: 75%; font-weight: 850; color: var(--turf); line-height: 1; font-variant-numeric: tabular-nums; }
@@ -73,10 +73,11 @@
     .bib.going { background: var(--mint-ink); }
     .bib.maybe { background: var(--paper); box-shadow: inset 0 0 0 2px var(--mint-ink); }
     .bib.cant  { background: #b9c3bd; }
-    .bib.none  { background: var(--paper); box-shadow: inset 0 0 0 2px #b9c3bd; }
-    .bib.you   { box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--amber-ink); }
+    /* Mia: ringed in amber, empty until the visitor answers for her. */
+    .bib.you       { background: var(--paper); box-shadow: inset 0 0 0 2px #b9c3bd, 0 0 0 2px var(--paper), 0 0 0 4px var(--amber-ink); }
+    .bib.you.going { background: var(--mint-ink); box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--amber-ink); }
     .bib.you.maybe { box-shadow: inset 0 0 0 2px var(--mint-ink), 0 0 0 2px var(--paper), 0 0 0 4px var(--amber-ink); }
-    .bib.you.none  { box-shadow: inset 0 0 0 2px #b9c3bd, 0 0 0 2px var(--paper), 0 0 0 4px var(--amber-ink); }
+    .bib.you.cant  { background: #b9c3bd; box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--amber-ink); }
     .key { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 10px; font-size: .8rem; color: var(--slate); }
     .key span { display: inline-flex; align-items: center; gap: 6px; }
     .key i { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
@@ -91,7 +92,7 @@
     }
     .answers button:hover { background: var(--mint-wash); }
     .answers button[aria-pressed="true"] { background: var(--turf); color: #fff; }
-    .ask .result { margin-top: 10px; font-size: .92rem; color: #4a3500; min-height: 2.8em; }
+    .ask .result { margin-top: 10px; font-size: .92rem; color: #4a3500; min-height: 4.2em; }
     .try { margin-top: 12px; font-size: .9rem; color: #b5ccbf; text-align: center; max-width: 400px; justify-self: end; width: 100%; }
     .demo { display: grid; }
 
@@ -251,15 +252,14 @@
           <dl aria-live="polite" id="tally">
             <div><dt>Going</dt><dd data-k="going">11</dd></div>
             <div><dt>Maybe</dt><dd data-k="maybe">2</dd></div>
-            <div><dt>Can't</dt><dd data-k="cant">3</dd></div>
-            <div><dt>No answer</dt><dd data-k="none">2</dd></div>
+            <div><dt>Can't</dt><dd data-k="cant">4</dd></div>
           </dl>
           <div class="bibs" id="bibs" aria-hidden="true"></div>
           <div class="key" aria-hidden="true">
             <span><i style="background:var(--mint-ink)"></i>Going</span>
             <span><i style="box-shadow:inset 0 0 0 2px var(--mint-ink)"></i>Maybe</span>
             <span><i style="background:#b9c3bd"></i>Can't</span>
-            <span><i style="box-shadow:inset 0 0 0 2px #b9c3bd"></i>No answer</span>
+            <span><i style="box-shadow:inset 0 0 0 2px #b9c3bd, 0 0 0 1px var(--paper), 0 0 0 3px var(--amber-ink)"></i>Mia</span>
           </div>
         </div>
 
@@ -270,7 +270,7 @@
             <button type="button" data-a="maybe" aria-pressed="false">Maybe</button>
             <button type="button" data-a="cant" aria-pressed="false">Can't</button>
           </div>
-          <p class="result" id="result" aria-live="polite">No answer yet, so TIRA will remind you 3 days, 1 day and 2 hours before.</p>
+          <p class="result" id="result" aria-live="polite">Until you answer, TIRA will remind you 3 days, 1 day and 2 hours before.</p>
         </div>
       </article>
       <p class="try" id="try" hidden>Try it. This is how a parent answers for their child in the app.</p>
@@ -474,30 +474,25 @@
   // buttons only appear when they work.
   (function () {
     document.documentElement.classList.add('js');
-    var tally = { going: 11, maybe: 2, cant: 3, none: 2 };
-    var order = ['going', 'maybe', 'cant', 'none'];
+    // why: the app's only answers are Going, Maybe and Can't. Everyone else on
+    // the team has answered; Mia is the one player still to answer.
+    var others = { going: 11, maybe: 2, cant: 4 };
+    var order = ['going', 'maybe', 'cant'];
     var bibs = document.getElementById('bibs');
-    var mine = 'none';
+    var mine = null;
     var RESULT = {
-      none: "No answer yet, so TIRA will remind you 3 days, 1 day and 2 hours before.",
       going: "Mia's going. The coach sees it straight away, and TIRA won't send you any more “Are you coming?” reminders.",
       maybe: "Mia's a maybe. You can change it any time before the game.",
       cant: "Mia can't make it. The coach knows in time to find a fill-in."
     };
 
-    function draw() {
-      var html = '', i = 0;
-      // Everyone else, grouped by answer, then Mia last.
-      var rest = { going: tally.going, maybe: tally.maybe, cant: tally.cant, none: tally.none };
-      rest[mine] -= 1;
-      order.forEach(function (k) {
-        for (var n = 0; n < rest[k]; n++) html += '<span class="bib ' + k + '" style="--i:' + (i++) + '"></span>';
-      });
-      html += '<span class="bib you ' + mine + '" style="--i:' + i + '"></span>';
-      bibs.innerHTML = html;
-      order.forEach(function (k) { document.querySelector('[data-k="' + k + '"]').textContent = tally[k]; });
-    }
-    draw();
+    var html = '', i = 0;
+    order.forEach(function (k) {
+      for (var n = 0; n < others[k]; n++) html += '<span class="bib ' + k + '" style="--i:' + (i++) + '"></span>';
+    });
+    html += '<span class="bib you" style="--i:' + i + '"></span>';
+    bibs.innerHTML = html;
+    var you = bibs.querySelector('.you');
 
     var ask = document.getElementById('ask');
     ask.hidden = false;
@@ -506,21 +501,14 @@
     var btns = ask.querySelectorAll('button');
     btns.forEach(function (b) {
       b.addEventListener('click', function () {
-        var a = b.getAttribute('data-a');
-        if (a === mine) a = 'none'; // tap again to clear
-        tally[mine] -= 1; tally[a] += 1; mine = a;
-        btns.forEach(function (x) { x.setAttribute('aria-pressed', String(x.getAttribute('data-a') === mine)); });
+        mine = b.getAttribute('data-a');
+        btns.forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
         result.textContent = RESULT[mine];
-        // Only animate the first time; later changes just recolour.
-        bibs.querySelectorAll('.bib').forEach(function (el) { el.style.animation = 'none'; });
-        var you = bibs.querySelector('.you');
+        you.style.animation = 'none';
         you.className = 'bib you ' + mine;
-        // Re-colour the rest in case counts shifted.
-        var rest = { going: tally.going, maybe: tally.maybe, cant: tally.cant, none: tally.none };
-        rest[mine] -= 1;
-        var all = bibs.querySelectorAll('.bib:not(.you)'), j = 0;
-        order.forEach(function (k) { for (var n = 0; n < rest[k]; n++) all[j++].className = 'bib ' + k; });
-        order.forEach(function (k) { document.querySelector('[data-k="' + k + '"]').textContent = tally[k]; });
+        order.forEach(function (k) {
+          document.querySelector('[data-k="' + k + '"]').textContent = others[k] + (k === mine ? 1 : 0);
+        });
       });
     });
   })();
