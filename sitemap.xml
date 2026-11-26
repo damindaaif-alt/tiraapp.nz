@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://tiraapp.nz/</loc></url>
-  <url><loc>https://tiraapp.nz/clubs/</loc></url>
-  <url><loc>https://tiraapp.nz/guide/</loc></url>
-  <url><loc>https://tiraapp.nz/support/</loc></url>
-  <url><loc>https://tiraapp.nz/status/</loc></url>
-  <url><loc>https://tiraapp.nz/partners/</loc></url>
-  <url><loc>https://tiraapp.nz/support-tira/</loc></url>
-  <url><loc>https://tiraapp.nz/privacy/</loc></url>
-  <url><loc>https://tiraapp.nz/terms/</loc></url>
-  <url><loc>https://tiraapp.nz/delete-account/</loc></url>
+  <url><loc>https://tiraapp.nz/</loc><lastmod>2026-11-27</lastmod></url>
+  <url><loc>https://tiraapp.nz/clubs/</loc><lastmod>2026-11-27</lastmod></url>
+  <url><loc>https://tiraapp.nz/guide/</loc><lastmod>2026-11-27</lastmod></url>
+  <url><loc>https://tiraapp.nz/support/</loc><lastmod>2026-11-27</lastmod></url>
+  <url><loc>https://tiraapp.nz/status/</loc><lastmod>2026-11-27</lastmod></url>
+  <url><loc>https://tiraapp.nz/partners/</loc><lastmod>2026-11-27</lastmod></url>
+  <url><loc>https://tiraapp.nz/support-tira/</loc><lastmod>2026-11-27</lastmod></url>
+  <url><loc>https://tiraapp.nz/privacy/</loc><lastmod>2026-11-27</lastmod></url>
+  <url><loc>https://tiraapp.nz/terms/</loc><lastmod>2026-11-27</lastmod></url>
+  <url><loc>https://tiraapp.nz/delete-account/</loc><lastmod>2026-11-27</lastmod></url>
 </urlset>

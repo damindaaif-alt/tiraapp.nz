@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en-NZ">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TIRA | The free team app for community sport</title>
-  <meta name="description" content="TIRA is the free team app for community sport in Aotearoa. One schedule, a one-tap answer from every player and parent, and reminders sent for you. No ads." />
+  <title>TIRA Sports | Free team app for community sport</title>
+  <meta name="description" content="Free team app for football, rugby, netball, cricket, hockey and more. One schedule, a one-tap answer from every family, and reminders sent for you." />
   <link rel="canonical" href="https://tiraapp.nz/" />
   <meta name="theme-color" content="#1a3a2a" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="TIRA" />
-  <meta property="og:title" content="TIRA | The free team app for community sport" />
+  <meta property="og:title" content="TIRA Sports | Free team app for community sport" />
   <meta property="og:description" content="One schedule, a one-tap answer from every player and parent, and reminders sent for you. Free, with no ads." />
   <meta property="og:url" content="https://tiraapp.nz/" />
   <meta property="og:image" content="https://tiraapp.nz/android-chrome-512x512.png" />
@@ -24,17 +24,49 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "MobileApplication",
-    "name": "TIRA Sports",
-    "operatingSystem": "Android, iOS",
-    "applicationCategory": "SportsApplication",
-    "description": "The free team app for community sport: schedule, availability, reminders, updates and team chat.",
-    "url": "https://tiraapp.nz/",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "NZD" },
-    "publisher": { "@type": "Organization", "name": "Aurodox Ltd", "url": "https://tiraapp.nz/" },
-    "sameAs": [
-      "https://play.google.com/store/apps/details?id=nz.tira.app",
-      "https://apps.apple.com/nz/app/tira-sports/id6776856453"
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://tiraapp.nz/#org",
+        "name": "TIRA",
+        "legalName": "Aurodox Ltd",
+        "url": "https://tiraapp.nz/",
+        "logo": "https://tiraapp.nz/android-chrome-512x512.png",
+        "email": "support@tiraapp.nz"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://tiraapp.nz/#site",
+        "name": "TIRA Sports",
+        "url": "https://tiraapp.nz/",
+        "publisher": { "@id": "https://tiraapp.nz/#org" }
+      },
+      {
+        "@type": "MobileApplication",
+        "name": "TIRA Sports",
+        "operatingSystem": "Android, iOS",
+        "applicationCategory": "SportsApplication",
+        "description": "Free team app for community sport. One schedule for the team, Going, Maybe or Can't from every player and parent, reminders sent automatically, team updates and chat.",
+        "url": "https://tiraapp.nz/",
+        "countriesSupported": "NZ, AU, GB",
+        "featureList": [
+          "Team schedule for trainings, games and events",
+          "Availability: Going, Maybe or Can't",
+          "Automatic reminders before each event",
+          "Team announcements and chat",
+          "Volunteer roles and ride sharing",
+          "Results and season record",
+          "Cricket game day lineup",
+          "Fixtures from PlayHQ",
+          "Works offline at the ground"
+        ],
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "NZD" },
+        "publisher": { "@id": "https://tiraapp.nz/#org" },
+        "sameAs": [
+          "https://play.google.com/store/apps/details?id=nz.tira.app",
+          "https://apps.apple.com/app/tira-sports/id6776856453"
+        ]
+      }
     ]
   }
   </script>
@@ -232,7 +264,7 @@
       <h1 id="hero-title" class="display">Who's coming on Saturday?</h1>
       <p class="lede">TIRA answers that for you. One schedule for the team, a one-tap answer from every player and parent, and reminders that go out on their own.</p>
       <div class="stores" id="download">
-        <a class="store" href="https://apps.apple.com/nz/app/tira-sports/id6776856453">
+        <a class="store" href="https://apps.apple.com/app/tira-sports/id6776856453">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
           <span><small>Download on the</small><strong>App Store</strong></span>
         </a>
@@ -241,7 +273,7 @@
           <span><small>Get it on</small><strong>Google Play</strong></span>
         </a>
       </div>
-      <p class="small">Free for teams, players and families. No ads, no passwords, and we never sell your data. Made in Aotearoa.</p>
+      <p class="small">Free for teams, players and families. No ads, no passwords, and we never sell your data. Made in Aotearoa, for teams in New Zealand, Australia and the UK.</p>
     </div>
 
     <div class="demo">
@@ -282,7 +314,7 @@
 <section class="section" id="features" aria-labelledby="features-title">
   <div class="wrap">
     <h2 id="features-title" class="display">Everything your team needs each week</h2>
-    <p class="intro">Built for volunteer coaches and busy whānau, not tech experts. Every team gets these three from the start.</p>
+    <p class="intro">For football, rugby, netball, cricket, hockey, basketball, volleyball, badminton and water polo teams, and any other sport. Built for volunteer coaches and busy whānau, not tech experts. Every team gets these three from the start.</p>
 
     <div class="basics">
       <div>
@@ -415,7 +447,7 @@
       <p>Free for coaches, players and families. Questions first? <a href="/support/">Visit help and support</a>.</p>
     </div>
     <div class="stores">
-      <a class="store" href="https://apps.apple.com/nz/app/tira-sports/id6776856453">
+      <a class="store" href="https://apps.apple.com/app/tira-sports/id6776856453">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
         <span><small>Download on the</small><strong>App Store</strong></span>
       </a>

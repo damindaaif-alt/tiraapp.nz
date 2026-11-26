@@ -1,0 +1,60 @@
+# TIRA Sports
+
+> TIRA (app store name "TIRA Sports") is a free team app for community sport.
+> Coaches, players and parents get one schedule for the team, answer Going,
+> Maybe or Can't for each event, and TIRA sends the reminders. Free for teams,
+> players and families, with no ads. Made in Aotearoa New Zealand, for teams in
+> New Zealand, Australia and the United Kingdom. Available on iPhone and Android.
+
+## Sports
+Football, rugby, netball, cricket, hockey, basketball, volleyball, badminton,
+water polo, and any other sport. Groups that don't play games (rides, walks,
+working bees) can use it as an activity group.
+
+## What every team gets
+- Schedule: trainings, games and events with the venue, notes and a map link.
+  A whole season's fixture list can be pasted in at once, and events can repeat
+  every week or fortnight.
+- Availability: players and parents answer Going, Maybe or Can't with one tap.
+- Reminders: 3 days, 1 day and 2 hours before an event to anyone who hasn't
+  answered, and a "starting soon" reminder 1 hour before.
+- Updates and team chat, with replies, mentions, reactions and quick polls.
+- Works at a ground with no signal, showing what was saved when last online.
+
+## Features a coach can switch on in Team settings
+- Share availability (first names only)
+- Close availability early for a game
+- Volunteer roles (scorer, referee or umpire, oranges, snacks)
+- Coordinate rides
+- Record results, an MVP for each game, and a season record
+- Game day lineup for cricket (batting order, captain, keeper, opening bowlers)
+- Fixtures from PlayHQ, for clubs that run competitions on PlayHQ
+
+## Children's privacy
+- A child is registered with first name and date of birth only. No surname, no photo.
+- Emergency contacts and medical notes are locked. Coaches see them only if a
+  parent turns it on, and every look is logged. Medical notes are encrypted.
+- Parents can see, change or delete their child's details at any time.
+- No ads, and personal data is never sold.
+
+## Cost
+Free for teams, players and families. Local businesses can become partners,
+and anyone can donate to help keep TIRA free.
+
+## Get the app
+- App Store: https://apps.apple.com/app/tira-sports/id6776856453
+- Google Play: https://play.google.com/store/apps/details?id=nz.tira.app
+
+## Key pages
+- Home: https://tiraapp.nz/
+- For clubs: https://tiraapp.nz/clubs/
+- Quick start guide: https://tiraapp.nz/guide/
+- Help and common questions: https://tiraapp.nz/support/
+- Privacy Policy: https://tiraapp.nz/privacy/
+- Terms of Use: https://tiraapp.nz/terms/
+- Service status: https://tiraapp.nz/status/
+
+## Contact
+Support: support@tiraapp.nz
+Privacy: privacy@tiraapp.nz
+Operated by Aurodox Ltd.
