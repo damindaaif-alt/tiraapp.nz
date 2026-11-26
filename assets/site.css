@@ -124,16 +124,11 @@ h1, h2, h3 { color: var(--turf); text-wrap: balance; }
 .site-header .wrap { display: flex; align-items: center; gap: 28px; height: var(--header-h); }
 
 .wordmark {
-  display: inline-flex; align-items: center; gap: 11px;
   font-stretch: 112%; font-weight: 900; font-size: 1.35rem; letter-spacing: .18em;
   color: var(--turf); text-decoration: none; flex-shrink: 0; line-height: 1;
 }
 .wordmark:hover { color: var(--turf); }
-/* The TIRA mark from the app icon, without its tile. On the light header the
-   centre takes the wordmark's green, since the app's cream would vanish. */
-.wordmark .mark { height: 38px; width: 34px; flex-shrink: 0; }
-.wordmark .petals { fill: var(--mint); }
-.wordmark .centre { fill: var(--turf); }
+.wordmark i { font-style: normal; color: var(--mint-ink); }
 
 .site-nav { display: flex; align-items: center; gap: 4px; margin-left: auto; }
 .site-nav a {
@@ -289,7 +284,7 @@ h1, h2, h3 { color: var(--turf); text-wrap: balance; }
 .site-footer { background: var(--turf-deep); color: #c3d4ca; padding: 56px 0 32px; font-size: .95rem; }
 .site-footer .cols { display: grid; gap: 36px; grid-template-columns: 1.4fr repeat(3, 1fr); }
 .site-footer .wordmark { color: #fff; }
-.site-footer .wordmark .centre { fill: #f8f4ed; }
+.site-footer .wordmark i { color: var(--mint); }
 .site-footer .about p { margin-top: 12px; max-width: 30ch; }
 .site-footer h2 { font-size: .95rem; font-weight: 700; color: #fff; margin-bottom: 12px; }
 .site-footer ul { list-style: none; padding: 0; }
